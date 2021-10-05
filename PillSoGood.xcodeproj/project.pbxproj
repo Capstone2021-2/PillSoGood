@@ -1,0 +1,694 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD576CE3270C585A009DB579 /* MainPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD576CE2270C585A009DB579 /* MainPage.storyboard */; };
+		CD576CE5270C5DA0009DB579 /* SupplementTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */; };
+		CD576CE7270C5E43009DB579 /* AlarmTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */; };
+		CD576CE9270C5E78009DB579 /* MyPageTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD576CE8270C5E78009DB579 /* MyPageTapViewController.swift */; };
+		CD68125E2702E29800F6D2C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68125D2702E29800F6D2C4 /* AppDelegate.swift */; };
+		CD6812602702E29800F6D2C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68125F2702E29800F6D2C4 /* SceneDelegate.swift */; };
+		CD6812622702E29800F6D2C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812612702E29800F6D2C4 /* ViewController.swift */; };
+		CD6812652702E29800F6D2C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD6812632702E29800F6D2C4 /* Main.storyboard */; };
+		CD6812682702E29900F6D2C4 /* PillSoGood.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD6812662702E29900F6D2C4 /* PillSoGood.xcdatamodeld */; };
+		CD68126A2702E29A00F6D2C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6812692702E29A00F6D2C4 /* Assets.xcassets */; };
+		CD68126D2702E29A00F6D2C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD68126B2702E29A00F6D2C4 /* LaunchScreen.storyboard */; };
+		CD6812782702E29A00F6D2C4 /* PillSoGoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812772702E29A00F6D2C4 /* PillSoGoodTests.swift */; };
+		CD6812822702E29A00F6D2C4 /* PillSoGoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812812702E29A00F6D2C4 /* PillSoGoodUITests.swift */; };
+		CD6812842702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */; };
+		CDA0DC562703675B009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
+		CDA0DC5727036868009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
+		CDA0DC5827036869009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
+		CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0DC592703906C009BBFFF /* MainPage.swift */; };
+		CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA4732270A571E00549441 /* FindInfoViewController.swift */; };
+		CDDA4735270A571F00549441 /* FindInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDDA4733270A571E00549441 /* FindInfoViewController.xib */; };
+		CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFE1704270997B300BB15C2 /* SignUpViewController.swift */; };
+		CDFE1707270997B300BB15C2 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFE1705270997B300BB15C2 /* SignUpViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD6812742702E29A00F6D2C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD6812522702E29800F6D2C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD6812592702E29800F6D2C4;
+			remoteInfo = PillSoGood;
+		};
+		CD68127E2702E29A00F6D2C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD6812522702E29800F6D2C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD6812592702E29800F6D2C4;
+			remoteInfo = PillSoGood;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CD576CE2270C585A009DB579 /* MainPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainPage.storyboard; sourceTree = "<group>"; };
+		CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementTapViewController.swift; sourceTree = "<group>"; };
+		CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTapViewController.swift; sourceTree = "<group>"; };
+		CD576CE8270C5E78009DB579 /* MyPageTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTapViewController.swift; sourceTree = "<group>"; };
+		CD68125A2702E29800F6D2C4 /* PillSoGood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PillSoGood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD68125D2702E29800F6D2C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD68125F2702E29800F6D2C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CD6812612702E29800F6D2C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD6812642702E29800F6D2C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD6812672702E29900F6D2C4 /* PillSoGood.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PillSoGood.xcdatamodel; sourceTree = "<group>"; };
+		CD6812692702E29A00F6D2C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD68126C2702E29A00F6D2C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD68126E2702E29A00F6D2C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD6812732702E29A00F6D2C4 /* PillSoGoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PillSoGoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD6812772702E29A00F6D2C4 /* PillSoGoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSoGoodTests.swift; sourceTree = "<group>"; };
+		CD68127D2702E29A00F6D2C4 /* PillSoGoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PillSoGoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD6812812702E29A00F6D2C4 /* PillSoGoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSoGoodUITests.swift; sourceTree = "<group>"; };
+		CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSoGoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CDA0DC552703675B009BBFFF /* FredokaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FredokaOne.ttf; sourceTree = "<group>"; };
+		CDA0DC592703906C009BBFFF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		CDC9C6FE270A3B45004A8477 /* PillSoGood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PillSoGood.entitlements; sourceTree = "<group>"; };
+		CDDA4732270A571E00549441 /* FindInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindInfoViewController.swift; sourceTree = "<group>"; };
+		CDDA4733270A571E00549441 /* FindInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindInfoViewController.xib; sourceTree = "<group>"; };
+		CDFE1704270997B300BB15C2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CDFE1705270997B300BB15C2 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD6812572702E29800F6D2C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD6812702702E29A00F6D2C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD68127A2702E29A00F6D2C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD6812512702E29800F6D2C4 = {
+			isa = PBXGroup;
+			children = (
+				CD68125C2702E29800F6D2C4 /* PillSoGood */,
+				CD6812762702E29A00F6D2C4 /* PillSoGoodTests */,
+				CD6812802702E29A00F6D2C4 /* PillSoGoodUITests */,
+				CD68125B2702E29800F6D2C4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CD68125B2702E29800F6D2C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD68125A2702E29800F6D2C4 /* PillSoGood.app */,
+				CD6812732702E29A00F6D2C4 /* PillSoGoodTests.xctest */,
+				CD68127D2702E29A00F6D2C4 /* PillSoGoodUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD68125C2702E29800F6D2C4 /* PillSoGood */ = {
+			isa = PBXGroup;
+			children = (
+				CDC9C6FE270A3B45004A8477 /* PillSoGood.entitlements */,
+				CD68125D2702E29800F6D2C4 /* AppDelegate.swift */,
+				CD68125F2702E29800F6D2C4 /* SceneDelegate.swift */,
+				CD6812612702E29800F6D2C4 /* ViewController.swift */,
+				CD6812632702E29800F6D2C4 /* Main.storyboard */,
+				CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */,
+				CDDA4732270A571E00549441 /* FindInfoViewController.swift */,
+				CD576CE2270C585A009DB579 /* MainPage.storyboard */,
+				CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */,
+				CDDA4733270A571E00549441 /* FindInfoViewController.xib */,
+				CDA0DC592703906C009BBFFF /* MainPage.swift */,
+				CD576CE8270C5E78009DB579 /* MyPageTapViewController.swift */,
+				CDFE1704270997B300BB15C2 /* SignUpViewController.swift */,
+				CDFE1705270997B300BB15C2 /* SignUpViewController.xib */,
+				CD6812692702E29A00F6D2C4 /* Assets.xcassets */,
+				CD68126B2702E29A00F6D2C4 /* LaunchScreen.storyboard */,
+				CD68126E2702E29A00F6D2C4 /* Info.plist */,
+				CD6812662702E29900F6D2C4 /* PillSoGood.xcdatamodeld */,
+				CDA0DC552703675B009BBFFF /* FredokaOne.ttf */,
+			);
+			path = PillSoGood;
+			sourceTree = "<group>";
+		};
+		CD6812762702E29A00F6D2C4 /* PillSoGoodTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD6812772702E29A00F6D2C4 /* PillSoGoodTests.swift */,
+			);
+			path = PillSoGoodTests;
+			sourceTree = "<group>";
+		};
+		CD6812802702E29A00F6D2C4 /* PillSoGoodUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CD6812812702E29A00F6D2C4 /* PillSoGoodUITests.swift */,
+				CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */,
+			);
+			path = PillSoGoodUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD6812592702E29800F6D2C4 /* PillSoGood */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD6812872702E29A00F6D2C4 /* Build configuration list for PBXNativeTarget "PillSoGood" */;
+			buildPhases = (
+				CD6812562702E29800F6D2C4 /* Sources */,
+				CD6812572702E29800F6D2C4 /* Frameworks */,
+				CD6812582702E29800F6D2C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PillSoGood;
+			productName = PillSoGood;
+			productReference = CD68125A2702E29800F6D2C4 /* PillSoGood.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD6812722702E29A00F6D2C4 /* PillSoGoodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD68128A2702E29A00F6D2C4 /* Build configuration list for PBXNativeTarget "PillSoGoodTests" */;
+			buildPhases = (
+				CD68126F2702E29A00F6D2C4 /* Sources */,
+				CD6812702702E29A00F6D2C4 /* Frameworks */,
+				CD6812712702E29A00F6D2C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD6812752702E29A00F6D2C4 /* PBXTargetDependency */,
+			);
+			name = PillSoGoodTests;
+			productName = PillSoGoodTests;
+			productReference = CD6812732702E29A00F6D2C4 /* PillSoGoodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CD68127C2702E29A00F6D2C4 /* PillSoGoodUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD68128D2702E29A00F6D2C4 /* Build configuration list for PBXNativeTarget "PillSoGoodUITests" */;
+			buildPhases = (
+				CD6812792702E29A00F6D2C4 /* Sources */,
+				CD68127A2702E29A00F6D2C4 /* Frameworks */,
+				CD68127B2702E29A00F6D2C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD68127F2702E29A00F6D2C4 /* PBXTargetDependency */,
+			);
+			name = PillSoGoodUITests;
+			productName = PillSoGoodUITests;
+			productReference = CD68127D2702E29A00F6D2C4 /* PillSoGoodUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD6812522702E29800F6D2C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					CD6812592702E29800F6D2C4 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					CD6812722702E29A00F6D2C4 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = CD6812592702E29800F6D2C4;
+					};
+					CD68127C2702E29A00F6D2C4 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = CD6812592702E29800F6D2C4;
+					};
+				};
+			};
+			buildConfigurationList = CD6812552702E29800F6D2C4 /* Build configuration list for PBXProject "PillSoGood" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD6812512702E29800F6D2C4;
+			productRefGroup = CD68125B2702E29800F6D2C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD6812592702E29800F6D2C4 /* PillSoGood */,
+				CD6812722702E29A00F6D2C4 /* PillSoGoodTests */,
+				CD68127C2702E29A00F6D2C4 /* PillSoGoodUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD6812582702E29800F6D2C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD68126D2702E29A00F6D2C4 /* LaunchScreen.storyboard in Resources */,
+				CD68126A2702E29A00F6D2C4 /* Assets.xcassets in Resources */,
+				CD576CE3270C585A009DB579 /* MainPage.storyboard in Resources */,
+				CD6812652702E29800F6D2C4 /* Main.storyboard in Resources */,
+				CDFE1707270997B300BB15C2 /* SignUpViewController.xib in Resources */,
+				CDA0DC562703675B009BBFFF /* FredokaOne.ttf in Resources */,
+				CDDA4735270A571F00549441 /* FindInfoViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD6812712702E29A00F6D2C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA0DC5727036868009BBFFF /* FredokaOne.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD68127B2702E29A00F6D2C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA0DC5827036869009BBFFF /* FredokaOne.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD6812562702E29800F6D2C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */,
+				CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */,
+				CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */,
+				CD6812622702E29800F6D2C4 /* ViewController.swift in Sources */,
+				CD68125E2702E29800F6D2C4 /* AppDelegate.swift in Sources */,
+				CD6812602702E29800F6D2C4 /* SceneDelegate.swift in Sources */,
+				CD6812682702E29900F6D2C4 /* PillSoGood.xcdatamodeld in Sources */,
+				CD576CE9270C5E78009DB579 /* MyPageTapViewController.swift in Sources */,
+				CD576CE7270C5E43009DB579 /* AlarmTapViewController.swift in Sources */,
+				CD576CE5270C5DA0009DB579 /* SupplementTapViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD68126F2702E29A00F6D2C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD6812782702E29A00F6D2C4 /* PillSoGoodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD6812792702E29A00F6D2C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD6812842702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift in Sources */,
+				CD6812822702E29A00F6D2C4 /* PillSoGoodUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD6812752702E29A00F6D2C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD6812592702E29800F6D2C4 /* PillSoGood */;
+			targetProxy = CD6812742702E29A00F6D2C4 /* PBXContainerItemProxy */;
+		};
+		CD68127F2702E29A00F6D2C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD6812592702E29800F6D2C4 /* PillSoGood */;
+			targetProxy = CD68127E2702E29A00F6D2C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD6812632702E29800F6D2C4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD6812642702E29800F6D2C4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD68126B2702E29A00F6D2C4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD68126C2702E29A00F6D2C4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD6812852702E29A00F6D2C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CD6812862702E29A00F6D2C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD6812882702E29A00F6D2C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PillSoGood/PillSoGood.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PillSoGood/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CD6812892702E29A00F6D2C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PillSoGood/PillSoGood.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PillSoGood/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		CD68128B2702E29A00F6D2C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PillSoGood.app/PillSoGood";
+			};
+			name = Debug;
+		};
+		CD68128C2702E29A00F6D2C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PillSoGood.app/PillSoGood";
+			};
+			name = Release;
+		};
+		CD68128E2702E29A00F6D2C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PillSoGood;
+			};
+			name = Debug;
+		};
+		CD68128F2702E29A00F6D2C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PillSoGood;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD6812552702E29800F6D2C4 /* Build configuration list for PBXProject "PillSoGood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD6812852702E29A00F6D2C4 /* Debug */,
+				CD6812862702E29A00F6D2C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD6812872702E29A00F6D2C4 /* Build configuration list for PBXNativeTarget "PillSoGood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD6812882702E29A00F6D2C4 /* Debug */,
+				CD6812892702E29A00F6D2C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD68128A2702E29A00F6D2C4 /* Build configuration list for PBXNativeTarget "PillSoGoodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD68128B2702E29A00F6D2C4 /* Debug */,
+				CD68128C2702E29A00F6D2C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD68128D2702E29A00F6D2C4 /* Build configuration list for PBXNativeTarget "PillSoGoodUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD68128E2702E29A00F6D2C4 /* Debug */,
+				CD68128F2702E29A00F6D2C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD6812662702E29900F6D2C4 /* PillSoGood.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD6812672702E29900F6D2C4 /* PillSoGood.xcdatamodel */,
+			);
+			currentVersion = CD6812672702E29900F6D2C4 /* PillSoGood.xcdatamodel */;
+			path = PillSoGood.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CD6812522702E29800F6D2C4 /* Project object */;
+}
