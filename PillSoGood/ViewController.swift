@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CryptoKit
 
 enum PasswordType {
     case show
@@ -14,6 +15,7 @@ enum PasswordType {
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var id: UITextField! // 아이디
     @IBOutlet weak var password: UITextField!   // 비밀번호
     @IBOutlet weak var hideAndShowButton: UIImageView! {
         didSet {
@@ -23,12 +25,49 @@ class ViewController: UIViewController {
     }
     var Ptype = PasswordType.hide
     
+    @IBOutlet weak var loginButton: UIButton! { // 로그인 버튼
+        didSet {
+            loginButton.layer.cornerRadius = 5
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
     }
+    
+    // 로그인 버튼
+    @IBAction func logIn(_ sender: Any) {
+        guard let url = URL(string: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/user/login") else {
+            print("api is down")
+            return
+        }
+        
+        let login_id = self.id.text!
+        let password = self.password.text?.data(using: .utf8)!
+        let passwordSHA = SHA256.hash(data: password!)
+        let hashString = passwordSHA.compactMap { String(format: "%02x", $0) }.joined()
+        let param = ["login_id" : login_id, "password" : hashString]
+        let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = paramData
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue(String(paramData.count), forHTTPHeaderField: "Content-Length")
+        
+        URLSession.shared.dataTask(with: request) {
+            data, response, error in
+            if let e = error {
+                print(e.localizedDescription)
+            }
+            print(response!)
+        }.resume()
+    }
+    
     
     // 회원가입 버튼
     @IBAction func moveToJoin(_ sender: Any) {

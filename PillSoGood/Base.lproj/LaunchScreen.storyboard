@@ -22,19 +22,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PillSoGood" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxp-08-KtX">
-                                <rect key="frame" x="116" y="449" width="182" height="42.5"/>
+                                <rect key="frame" x="116" y="516.5" width="182" height="42.5"/>
                                 <fontDescription key="fontDescription" name="FredokaOne-Regular" family="Fredoka One" pointSize="35"/>
                                 <color key="textColor" red="0.51486021280000005" green="0.69394570590000004" blue="0.97258168460000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="건강기능식품 비교 플랫폼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tym-o5-uJh">
-                                <rect key="frame" x="122" y="491.5" width="170.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="126.5" y="559" width="161" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.51486021280000005" green="0.69394570590000004" blue="0.97258168460000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XOO-rq-sY0">
-                                <rect key="frame" x="107" y="224" width="200" height="200"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppLogo" translatesAutoresizingMaskIntoConstraints="NO" id="XOO-rq-sY0">
+                                <rect key="frame" x="107" y="316.5" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="5Ja-P8-BaB"/>
                                     <constraint firstAttribute="height" constant="200" id="ECx-oC-Mkl"/>
@@ -45,11 +45,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tym-o5-uJh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="8Fs-G5-ZqA"/>
-                            <constraint firstItem="jxp-08-KtX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1.05" id="8ng-IX-iRh"/>
+                            <constraint firstItem="jxp-08-KtX" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1.2" id="8ng-IX-iRh"/>
                             <constraint firstItem="XOO-rq-sY0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="fbU-QE-mM0"/>
                             <constraint firstItem="jxp-08-KtX" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="goR-uQ-OzC"/>
+                            <constraint firstItem="jxp-08-KtX" firstAttribute="top" secondItem="XOO-rq-sY0" secondAttribute="bottom" id="hyP-Ty-hnx"/>
                             <constraint firstItem="tym-o5-uJh" firstAttribute="top" secondItem="jxp-08-KtX" secondAttribute="bottom" id="mCd-ZM-sTZ"/>
-                            <constraint firstItem="XOO-rq-sY0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="180" id="qdD-dV-B8O"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -59,6 +59,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppLogo" width="500" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -16,14 +16,15 @@ class MyPageTapViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // 화면 클릭 시 탭바 아이템 수정
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarItem.title = "마이페이지"
+        self.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
     }
-    */
+    
+    // 화면 내려갈 시 탭바 아이템 수정
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarItem.title = nil
+    }
 
 }

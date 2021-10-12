@@ -25,6 +25,10 @@
 		CDA0DC5727036868009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
 		CDA0DC5827036869009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
 		CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0DC592703906C009BBFFF /* MainPage.swift */; };
+		CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229C82712D02900A534FE /* CategoryViewController.swift */; };
+		CDA229CB2712F0A900A534FE /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */; };
+		CDC32762271332120055A05D /* Nutrient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC32761271332120055A05D /* Nutrient.swift */; };
+		CDC806C427103024003F6398 /* AlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC806C327103024003F6398 /* AlarmDetailViewController.swift */; };
 		CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA4732270A571E00549441 /* FindInfoViewController.swift */; };
 		CDDA4735270A571F00549441 /* FindInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDDA4733270A571E00549441 /* FindInfoViewController.xib */; };
 		CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFE1704270997B300BB15C2 /* SignUpViewController.swift */; };
@@ -69,6 +73,10 @@
 		CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSoGoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CDA0DC552703675B009BBFFF /* FredokaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FredokaOne.ttf; sourceTree = "<group>"; };
 		CDA0DC592703906C009BBFFF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		CDA229C82712D02900A534FE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
+		CDC32761271332120055A05D /* Nutrient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrient.swift; sourceTree = "<group>"; };
+		CDC806C327103024003F6398 /* AlarmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailViewController.swift; sourceTree = "<group>"; };
 		CDC9C6FE270A3B45004A8477 /* PillSoGood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PillSoGood.entitlements; sourceTree = "<group>"; };
 		CDDA4732270A571E00549441 /* FindInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindInfoViewController.swift; sourceTree = "<group>"; };
 		CDDA4733270A571E00549441 /* FindInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindInfoViewController.xib; sourceTree = "<group>"; };
@@ -129,15 +137,16 @@
 				CD68125F2702E29800F6D2C4 /* SceneDelegate.swift */,
 				CD6812612702E29800F6D2C4 /* ViewController.swift */,
 				CD6812632702E29800F6D2C4 /* Main.storyboard */,
-				CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */,
-				CDDA4732270A571E00549441 /* FindInfoViewController.swift */,
+				CDC32761271332120055A05D /* Nutrient.swift */,
+				CDA229C72710A82B00A534FE /* login */,
 				CD576CE2270C585A009DB579 /* MainPage.storyboard */,
-				CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */,
-				CDDA4733270A571E00549441 /* FindInfoViewController.xib */,
 				CDA0DC592703906C009BBFFF /* MainPage.swift */,
+				CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */,
+				CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */,
+				CDA229C82712D02900A534FE /* CategoryViewController.swift */,
+				CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */,
+				CDC806C327103024003F6398 /* AlarmDetailViewController.swift */,
 				CD576CE8270C5E78009DB579 /* MyPageTapViewController.swift */,
-				CDFE1704270997B300BB15C2 /* SignUpViewController.swift */,
-				CDFE1705270997B300BB15C2 /* SignUpViewController.xib */,
 				CD6812692702E29A00F6D2C4 /* Assets.xcassets */,
 				CD68126B2702E29A00F6D2C4 /* LaunchScreen.storyboard */,
 				CD68126E2702E29A00F6D2C4 /* Info.plist */,
@@ -162,6 +171,17 @@
 				CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */,
 			);
 			path = PillSoGoodUITests;
+			sourceTree = "<group>";
+		};
+		CDA229C72710A82B00A534FE /* login */ = {
+			isa = PBXGroup;
+			children = (
+				CDFE1704270997B300BB15C2 /* SignUpViewController.swift */,
+				CDFE1705270997B300BB15C2 /* SignUpViewController.xib */,
+				CDDA4732270A571E00549441 /* FindInfoViewController.swift */,
+				CDDA4733270A571E00549441 /* FindInfoViewController.xib */,
+			);
+			path = login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,12 +324,16 @@
 				CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */,
 				CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */,
 				CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */,
+				CDA229CB2712F0A900A534FE /* CategoryDetailViewController.swift in Sources */,
+				CDC32762271332120055A05D /* Nutrient.swift in Sources */,
 				CD6812622702E29800F6D2C4 /* ViewController.swift in Sources */,
+				CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */,
 				CD68125E2702E29800F6D2C4 /* AppDelegate.swift in Sources */,
 				CD6812602702E29800F6D2C4 /* SceneDelegate.swift in Sources */,
 				CD6812682702E29900F6D2C4 /* PillSoGood.xcdatamodeld in Sources */,
 				CD576CE9270C5E78009DB579 /* MyPageTapViewController.swift in Sources */,
 				CD576CE7270C5E43009DB579 /* AlarmTapViewController.swift in Sources */,
+				CDC806C427103024003F6398 /* AlarmDetailViewController.swift in Sources */,
 				CD576CE5270C5DA0009DB579 /* SupplementTapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
