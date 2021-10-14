@@ -9,6 +9,10 @@ import UIKit
 import CryptoKit
 
 class SignUpViewController: UIViewController {
+    
+    struct DuplicateId: Codable {
+        let isValid: Int
+    }
 
     @IBOutlet weak var userId: UITextField! // 아이디
     @IBOutlet weak var password: UITextField!   // 패스워드
@@ -52,22 +56,56 @@ class SignUpViewController: UIViewController {
     
     // 아이디 중복확인 버튼
     @IBAction func confirmDuplication(_ sender: Any) {
-        if true {   // 아이디 사용 가능하면
-            // db 확인~~
-            let alert = UIAlertController(title: "사용 가능", message: "아이디 사용이 가능합니다.", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-                self.duplicationButton.isEnabled = false
-                self.userId.isEnabled = false
-            }
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
-        } else {    // 아이디 사용 불가능하면
-            let alert = UIAlertController(title: "사용 불가능", message: "다른 아이디를 입력해주세요", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-            }
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
+        let login_id = userId.text!
+        let param = ["login_id": login_id]
+        let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
+
+        guard let url = URL(string: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/user/duplicate-id") else {
+            print("api is down")
+            return
         }
+
+        // URLRequest 객체 정의
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = paramData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(String(paramData.count), forHTTPHeaderField: "Content-Length")
+
+        URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
+            if let err = error {
+                print("An error has occured: \(err.localizedDescription)")
+                return
+            }
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let isDuplicate = try decoder.decode(DuplicateId.self, from: data)
+                    DispatchQueue.main.async {
+                        if isDuplicate.isValid == 1 {
+                            let alert = UIAlertController(title: "사용 가능", message: "아이디 사용이 가능합니다.", preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                                self.duplicationButton.isEnabled = false
+                                self.userId.isEnabled = false
+                            }
+                            alert.addAction(okAction)
+                            self.present(alert, animated: true, completion: nil)
+                        } else {
+                            let alert = UIAlertController(title: "사용 불가능", message: "다른 아이디를 입력해주세요", preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                            }
+                            alert.addAction(okAction)
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                } catch {
+                    print("error")
+                }
+            }
+            
+            print(response!)
+        }.resume()  // POST 전송!
     }
     
     @objc func pwTextFieldDidChange(_ notification: Notification) {
