@@ -24,7 +24,7 @@ class AlarmDetailViewController: UIViewController {
     @IBOutlet weak var alarmAddButton: UIButton!    // 추가 버튼
     @IBOutlet weak var alarmTableView: UITableView! // 알람 테이블뷰
     
-    var alarm = 0   // 알람 수(수정 필요)
+    var alarm = [UIDatePicker]()   // 알람 수(수정 필요)
     
 
     override func viewDidLoad() {
@@ -45,6 +45,12 @@ class AlarmDetailViewController: UIViewController {
     
     // 뒤로갈 때 네비게이션바 없애기
     override func viewWillDisappear(_ animated: Bool) {
+//        let fommater = DateFormatter()
+//        fommater.dateFormat = "HH:mm"
+//        for i in alarm {
+//            print(fommater.string(from: i.date))
+//        }
+        UserDefaults.standard.set(alarm, forKey: "alarmsetting")
         self.navigationController?.isNavigationBarHidden = true
     }
     
@@ -58,14 +64,14 @@ class AlarmDetailViewController: UIViewController {
 
         } else {
             alarmAddButton.isHidden = true
-            alarm = 0
+            alarm.removeAll()
             alarmTableView.reloadData()
         }
     }
     
     // 알람 추가 버튼
     @IBAction func addAlarm(_ sender: Any) {
-        alarm += 1
+        alarm.append(UIDatePicker())
         alarmTableView.reloadData()
     }
     
@@ -73,7 +79,7 @@ class AlarmDetailViewController: UIViewController {
 
 extension AlarmDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alarm
+        return alarm.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +87,7 @@ extension AlarmDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.alarmLabel.text = "알람" + (indexPath.row+1).description
         cell.selectionStyle = .none
+        alarm[indexPath.row] = cell.alarmTimePicker
         
         return cell
     }
@@ -93,7 +100,7 @@ extension AlarmDetailViewController: UITableViewDelegate, UITableViewDataSource 
     // 스와이프해서 tableView Cell 삭제
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            alarm -= 1
+            alarm.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

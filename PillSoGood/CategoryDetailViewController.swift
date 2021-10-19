@@ -12,7 +12,7 @@ class CategoryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
 

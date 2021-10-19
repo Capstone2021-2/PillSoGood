@@ -50,7 +50,9 @@ class FindInfoViewController: UIViewController {
                 do {
                     let findID = try decoder.decode(FindID.self, from: data)
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "아이디 확인", message: findID.login_id, preferredStyle: .alert)
+                        let count = findID.login_id!.count
+                        let userId = findID.login_id!.prefix(count-3)+String(repeating: "*", count: 3)
+                        let alert = UIAlertController(title: "아이디 확인", message: userId.description, preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
                         alert.addAction(okAction)
                         self.present(alert, animated: true, completion: nil)

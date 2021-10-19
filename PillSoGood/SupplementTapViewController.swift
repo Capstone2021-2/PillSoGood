@@ -63,7 +63,7 @@ class SupplementTapViewController: UIViewController {
     
     // 카테고리 버튼 클릭 시
     @IBAction func moveToCategory(_ sender: UIButton) {
-        print(sender.titleLabel?.text ?? "")
+//        print(sender.titleLabel?.text ?? "")
         
         if let categoryVC = UIStoryboard(name: "MainPage", bundle: nil).instantiateViewController(withIdentifier: "CategoryViewController") as? CategoryViewController {
             categoryVC.title = sender.titleLabel?.text ?? ""

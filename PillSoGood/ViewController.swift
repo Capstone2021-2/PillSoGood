@@ -17,6 +17,9 @@ struct Response: Codable {
     let success: Bool?
     let token: String?
     let message: String?
+    let login_id: String?
+    let email: String?
+    let nickname: String?
 }
 
 class ViewController: UIViewController {
@@ -41,10 +44,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UserDefaults.standard.string(forKey: "token") != nil {
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let token = UserDefaults.standard.string(forKey: "token") {
             self.moveToMain()
         }
-        
     }
     
     // 로그인 버튼
@@ -93,6 +99,8 @@ class ViewController: UIViewController {
                     UserDefaults.standard.set(login_id, forKey: "id")
                     UserDefaults.standard.set(password, forKey: "pw")
                     UserDefaults.standard.set(result.token, forKey: "token")
+                    UserDefaults.standard.set(result.email, forKey: "email")
+                    UserDefaults.standard.set(result.nickname, forKey: "nickname")
                 }
             } catch {
                 print("error")

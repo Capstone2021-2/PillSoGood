@@ -23,25 +23,23 @@ class SignUpViewController: UIViewController {
             hideAndShowButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectPasswordType)))
         }
     }
+    @IBOutlet weak var checkPassword: UITextField!  // 패스워드 확인
+    var isChecked = 0
+    @IBOutlet weak var checkPasswordLabel: UILabel! // 패스워드 확인 label
+    var Ptype2 = PasswordType.hide
+    @IBOutlet weak var hideAndShowButton2: UIImageView! {
+        didSet {
+            hideAndShowButton2.isUserInteractionEnabled = true
+            hideAndShowButton2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectPasswordType2)))
+        }
+    }
     @IBOutlet weak var nickname: UITextField!   //닉네임
     @IBOutlet weak var emailId: UITextField!    // 이메일아이디
     @IBOutlet weak var emailAddress: UITextField!  // 이메일주소
-    
-    @IBOutlet weak var gender: UISegmentedControl!  // 성별
-    @IBOutlet weak var age: UITextField!    // 나이대
-    @IBOutlet weak var weight: UITextField! // 몸무게
-    @IBOutlet weak var height: UITextField! // 키
-    @IBOutlet weak var habitus: UITextField!    // 체질
-    
-    @IBOutlet weak var duplicationButton: UIButton!
+    @IBOutlet weak var duplicationButton: UIButton! // 중복확인 버튼
     
     let emailPickerView = UIPickerView()
-    let agePickerView = UIPickerView()
-    let habitusPickerView = UIPickerView()
-    
     let emails = ["naver.com", "daum.net", "gmail.com", "nate.com"]
-    let ages = ["1~2세", "3~5세", "6~8세", "9~11세", "12~14세", "15~18세", "19~29세", "30~49세", "50~64세", "65~74세", "75세 이상"]
-    let habituses = ["선택안함", "열태양", "한태양", "열소음", "한소음", "열소양", "한소양", "열태음", "한태음"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +48,7 @@ class SignUpViewController: UIViewController {
         dismissPickerView()
         
         NotificationCenter.default.addObserver(self, selector: #selector(pwTextFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: password)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkPasswordDidChange), name: UITextField.textDidChangeNotification, object: checkPassword)
         NotificationCenter.default.addObserver(self, selector: #selector(nnTextFieldDidChange(_:)), name: UITextField.textDidChangeNotification, object: nickname)
 
     }
@@ -108,6 +107,7 @@ class SignUpViewController: UIViewController {
         }.resume()  // POST 전송!
     }
     
+    // 패스워드 textfield 8자 이하 빨간줄 표시
     @objc func pwTextFieldDidChange(_ notification: Notification) {
         if let password = notification.object as? UITextField {
             if let text = password.text {
@@ -122,6 +122,27 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    @objc func checkPasswordDidChange(_ notification: Notification) {
+        if let checkPassword = notification.object as? UITextField {
+            if let text = checkPassword.text {
+                if text == password.text {
+                    self.checkPasswordLabel.text = "확인되었습니다"
+                    self.checkPasswordLabel.textColor = .darkGray
+                    self.checkPassword.layer.borderWidth = 0
+                    self.isChecked = 1
+                } else {
+                    self.checkPassword.layer.borderWidth = 0.5
+                    self.checkPassword.layer.borderColor = UIColor.red.cgColor
+                    self.checkPassword.layer.cornerRadius = 5
+                    self.checkPasswordLabel.textColor = .red
+                    self.checkPasswordLabel.text = "비밀번호가 다릅니다"
+                    self.isChecked = 0
+                }
+            }
+        }
+    }
+    
+    // 닉네임 textfield 10자 이상 빨간줄 표시
     @objc func nnTextFieldDidChange(_ notification: Notification) {
         if let nickname = notification.object as? UITextField {
             if let text = nickname.text {
@@ -143,18 +164,6 @@ class SignUpViewController: UIViewController {
         
         emailPickerView.delegate = self
         emailAddress.inputView = emailPickerView
-        
-        age.text = ages[0]
-        age.tintColor = .clear
-        
-        agePickerView.delegate = self
-        age.inputView = agePickerView
-        
-        habitus.text = habituses[0]
-        habitus.tintColor = .clear
-        
-        habitusPickerView.delegate = self
-        habitus.inputView = habitusPickerView
     }
     
     // picker view 툴바
@@ -167,8 +176,6 @@ class SignUpViewController: UIViewController {
         toolBar.isUserInteractionEnabled = true
         
         emailAddress.inputAccessoryView = toolBar
-        age.inputAccessoryView = toolBar
-        habitus.inputAccessoryView = toolBar
     }
     
     @objc func pickerExit() {
@@ -181,6 +188,8 @@ class SignUpViewController: UIViewController {
             return "아이디 중복확인을 해주세요"
         } else if password.text!.count < 8 {
             return "비밀번호를 8자리 이상으로 설정해주세요"
+        } else if isChecked == 0 {
+            return "비밀번호를 확인해주세요"
         } else if nickname.text!.count > 10 {
             return "닉네임을 10자리 이하로 설정해주세요"
         } else if emailId.text!.isEmpty {
@@ -249,6 +258,19 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    // 비밀번호 확인 옆 눈 모양 버튼을 누를 시
+    @objc func selectPasswordType2() {
+        if Ptype2 == .hide { // 비밀번호 숨김 상태에서 버튼누를 때
+            checkPassword.isSecureTextEntry = false
+            hideAndShowButton2.image = UIImage(systemName: "eye")
+            Ptype2 = .show
+        } else {    // 비밀번호 보임 상태에서 버튼누를 때
+            checkPassword.isSecureTextEntry = true
+            hideAndShowButton2.image = UIImage(systemName: "eye.slash")
+            Ptype2 = .hide
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -272,34 +294,16 @@ extension SignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     // picker view에 표시될 항목의 개수
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == emailPickerView {
-            return emails.count
-        } else if pickerView == agePickerView {
-            return ages.count
-        } else {
-            return habituses.count
-        }
+        return emails.count
     }
     
     // picker view 내에서 특정한 위치를 가리킬 때, 그 위치에 해당하는 문자열 반환
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == emailPickerView {
-            return emails[row]
-        } else if pickerView == agePickerView {
-            return ages[row]
-        } else {
-            return habituses[row]
-        }
+        return emails[row]
     }
     
     // 텍스트필드의 텍스트를 선택된 특정 row의 문자열로 바꾸기
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == emailPickerView {
-            emailAddress.text = emails[row]
-        } else if pickerView == agePickerView {
-            age.text = ages[row]
-        } else {
-            habitus.text = habituses[row]
-        }
+        emailAddress.text = emails[row]
     }
 }
