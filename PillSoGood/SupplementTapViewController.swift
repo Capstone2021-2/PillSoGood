@@ -124,8 +124,14 @@ extension SupplementTapViewController: UITableViewDelegate, UITableViewDataSourc
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // 베스트 영양제 클릭시
-        // ~~
+        if let detailVC = self.storyboard!.instantiateViewController(identifier: "SupplementDetailViewController") as? SupplementDetailViewController {
+            detailVC.title = "세부정보"
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            backBarButtonItem.tintColor = .gray
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

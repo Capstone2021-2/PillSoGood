@@ -12,6 +12,8 @@ class MySupplementCell: UITableViewCell {
     @IBOutlet weak var supplementImageView: UIImageView!
     @IBOutlet weak var supplementLabel: UILabel!
     @IBOutlet weak var brandLabel: UILabel!
+    @IBOutlet weak var alarmImageView: UIImageView!
+    @IBOutlet weak var alarmLabel: UILabel!
     
 }
 
@@ -19,22 +21,22 @@ class AlarmTapViewController: UIViewController {
 
     @IBOutlet weak var mySupplementTableView: UITableView!
     
+    var mySupplements:[MySupplement]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let temp = UserDefaults.standard.value(forKey: "MySupplements") as? Data {
+            mySupplements = try? PropertyListDecoder().decode([MySupplement].self, from: temp)
+        } else {
+            mySupplements = [MySupplement(name: "얼라이브 멀티비타민", brand: "얼라이브", imageUrl: "", useAlarm: 0, alarms: nil, uuid: nil)]
+        }
         mySupplementTableView.dataSource = self
         mySupplementTableView.delegate = self
-        
     }
     
     
     // 플러스 버튼 클릭 시
     @IBAction func addSupplement(_ sender: Any) {
-        
-    }
-    
-    
-    // 쓰레기통 버튼 클릭 시
-    @IBAction func removeSupplement(_ sender: Any) {
         
     }
     
@@ -46,6 +48,7 @@ class AlarmTapViewController: UIViewController {
     
     // 화면 내려갈 시 탭바 아이템 수정
     override func viewWillDisappear(_ animated: Bool) {
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(mySupplements), forKey: "MySupplements")
         self.navigationController?.tabBarItem.title = nil
     }
 
@@ -53,7 +56,7 @@ class AlarmTapViewController: UIViewController {
 
 extension AlarmTapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return mySupplements.count
     }
     
     // tableViewCell 클릭 시 AlarmDetailViewController로 이동
@@ -63,9 +66,15 @@ extension AlarmTapViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let alarmVC = UIStoryboard(name: "MainPage", bundle: nil).instantiateViewController(identifier: "AlarmDetailViewController") as? AlarmDetailViewController {
             alarmVC.title = "알람 설정"
+            alarmVC.supplementInfo = mySupplements[indexPath.row]
             let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
             backBarButtonItem.tintColor = .gray
             self.navigationItem.backBarButtonItem = backBarButtonItem
+            
+            alarmVC.supplementClosure = { sup in
+                self.mySupplements[indexPath.row] = sup
+                tableView.reloadData()
+            }
 
             self.navigationController?.pushViewController(alarmVC, animated: true)
         }
@@ -73,9 +82,21 @@ extension AlarmTapViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MySupplementCell", for: indexPath) as! MySupplementCell
+        let supplement = mySupplements[indexPath.row]
         
-        cell.supplementLabel.text = "지웨이 알티지 오메가3"
-        cell.brandLabel.text = "지웨이"
+        cell.supplementLabel.text = supplement.name
+        cell.brandLabel.text = supplement.brand
+        if supplement.useAlarm == 1 {
+            cell.alarmImageView.image = UIImage(systemName: "bell.circle")
+            var label = ""
+            for index in 0..<supplement.alarms!.count {
+                label += supplement.alarms![index] + " "
+            }
+            cell.alarmLabel.text = label
+        } else {
+            cell.alarmImageView.image = UIImage(systemName: "bell.slash.circle")
+            cell.alarmLabel.text = ""
+        }
         
         return cell
     }
@@ -89,6 +110,7 @@ extension AlarmTapViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.deleteRows(at: [indexPath], with: .fade)
+            mySupplements.remove(at: indexPath.row)
         }
     }
     

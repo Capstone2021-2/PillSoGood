@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AlarmCell: UITableViewCell {
     
@@ -24,36 +25,59 @@ class AlarmDetailViewController: UIViewController {
     @IBOutlet weak var alarmAddButton: UIButton!    // 추가 버튼
     @IBOutlet weak var alarmTableView: UITableView! // 알람 테이블뷰
     
-    var alarm = [UIDatePicker]()   // 알람 수(수정 필요)
-    
+    var supplementInfo: MySupplement!
+    var alarm = [UIDatePicker]()
+    var supplementClosure: ((MySupplement) -> Void)?
+    let notificationCenter = UNUserNotificationCenter.current()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.supplementLabel.text = supplementInfo.name
+        self.brandLabel.text = supplementInfo.brand
+        alarmSwitch.transform = CGAffineTransform(scaleX: 0.8, y: 0.75)
+        if self.supplementInfo.useAlarm == 1 {
+            alarmAddButton.isHidden = false
+            alarmSwitch.setOn(true, animated: false)
+            for index in 0..<supplementInfo.alarms!.count {
+                let datePicker = UIDatePicker()
+                datePicker.date = stringToDateType(string: supplementInfo.alarms![index])
+                alarm.append(datePicker)
+                alarmTableView.reloadData()
+            }
+        } else {
+            alarmSwitch.setOn(false, animated: false)
+        }
         
         alarmTableView.delegate = self
         alarmTableView.dataSource = self
         
         self.navigationController?.isNavigationBarHidden = false
-        
-        setAlarmSwitch()
-    }
-    
-    func setAlarmSwitch() {
-        alarmSwitch.transform = CGAffineTransform(scaleX: 0.8, y: 0.75)
-        alarmSwitch.setOn(false, animated: false)
     }
     
     // 뒤로갈 때 네비게이션바 없애기
     override func viewWillDisappear(_ animated: Bool) {
-//        let fommater = DateFormatter()
-//        fommater.dateFormat = "HH:mm"
-//        for i in alarm {
-//            print(fommater.string(from: i.date))
-//        }
-        UserDefaults.standard.set(alarm, forKey: "alarmsetting")
+        saveAlarmData()
+        if supplementInfo.useAlarm == 1 {
+            registerNotification()
+        } else {
+            removeNotification()
+        }
+        supplementClosure?(supplementInfo)
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    func saveAlarmData() {
+        supplementInfo.useAlarm = alarmSwitch.isOn == true ? 1 : 0
+        if alarmSwitch.isOn {
+            supplementInfo.alarms = [String]()
+            for index in 0..<alarm.count {
+                supplementInfo.alarms!.append(dateToStringType(date: alarm[index].date))
+            }
+        } else {
+            supplementInfo.alarms = nil
+        }
+    }
     
     // 복용알림 스위치 누를 시
     @IBAction func clickSwitchButton(_ sender: Any) {
@@ -65,6 +89,7 @@ class AlarmDetailViewController: UIViewController {
         } else {
             alarmAddButton.isHidden = true
             alarm.removeAll()
+            supplementInfo.alarms?.removeAll()
             alarmTableView.reloadData()
         }
     }
@@ -73,6 +98,47 @@ class AlarmDetailViewController: UIViewController {
     @IBAction func addAlarm(_ sender: Any) {
         alarm.append(UIDatePicker())
         alarmTableView.reloadData()
+    }
+    
+    func removeNotification() {
+        notificationCenter.removeDeliveredNotifications(withIdentifiers: supplementInfo.uuid ?? [])
+        supplementInfo.uuid?.removeAll()
+    }
+    
+    // 알람 등록
+    func registerNotification() {
+        removeNotification()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "지금은 " + supplementInfo.name + " 복용시간!"
+        content.body = supplementInfo.name + " 복용시간입니다. 건강을 위해 챙겨먹어요 :)"
+        
+        for index in 0..<supplementInfo.alarms!.count {
+            let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.hour, .minute], from: stringToDateType(string: supplementInfo.alarms![index])), repeats: true)
+            
+            let identifier = UUID().uuidString
+            supplementInfo.uuid?.append(identifier)
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            notificationCenter.add(request) { Error in
+                if let error = Error {
+                    print(error)
+                }
+            }
+        }
+        
+    }
+    
+    func stringToDateType(string : String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.date(from: string)!
+    }
+    
+    func dateToStringType(date : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: date)
     }
     
 }
@@ -87,6 +153,9 @@ extension AlarmDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.alarmLabel.text = "알람" + (indexPath.row+1).description
         cell.selectionStyle = .none
+        if supplementInfo.useAlarm == 1 {
+            cell.alarmTimePicker.date = alarm[indexPath.row].date
+        }
         alarm[indexPath.row] = cell.alarmTimePicker
         
         return cell
@@ -101,6 +170,7 @@ extension AlarmDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             alarm.remove(at: indexPath.row)
+            supplementInfo.alarms?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

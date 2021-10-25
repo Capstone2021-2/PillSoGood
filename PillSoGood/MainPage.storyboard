@@ -414,6 +414,89 @@
             </objects>
             <point key="canvasLocation" x="3374" y="-192"/>
         </scene>
+        <!--Supplement Detail View Controller-->
+        <scene sceneID="I6Z-yI-mnK">
+            <objects>
+                <viewController storyboardIdentifier="SupplementDetailViewController" id="AjH-bj-bXZ" customClass="SupplementDetailViewController" customModule="PillSoGood" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yid-gn-6jG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="S9K-Kb-Oz4">
+                                <rect key="frame" x="30" y="74" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="IzZ-qe-BB2"/>
+                                    <constraint firstAttribute="width" constant="100" id="Zhr-oC-lU4"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영양제 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-ez-XaY">
+                                <rect key="frame" x="160" y="83.5" width="82.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영양제 회사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH7-4J-c1I">
+                                <rect key="frame" x="160" y="115" width="69" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="r8L-ND-4cQ">
+                                <rect key="frame" x="160" y="142.5" width="20" height="20"/>
+                                <color key="tintColor" red="0.9995369315" green="0.95225065949999999" blue="0.57637375589999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Cje-1b-qdK"/>
+                                    <constraint firstAttribute="width" constant="20" id="dWK-Bd-w19"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="별점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDG-y4-Hob">
+                                <rect key="frame" x="185" y="144.5" width="24.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pills.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g8i-K2-b7o">
+                                <rect key="frame" x="224.5" y="143" width="20" height="19.5"/>
+                                <color key="tintColor" red="0.99938315150000001" green="0.50410354140000002" blue="0.3057883978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="G8l-SG-niJ"/>
+                                    <constraint firstAttribute="width" constant="20" id="Qn9-XV-UId"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="복용인원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbS-0P-LV7">
+                                <rect key="frame" x="249.5" y="144.5" width="48.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="12H-kn-mhQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kbS-0P-LV7" firstAttribute="leading" secondItem="g8i-K2-b7o" secondAttribute="trailing" constant="5" id="FfW-k0-TqI"/>
+                            <constraint firstItem="r8L-ND-4cQ" firstAttribute="top" secondItem="qH7-4J-c1I" secondAttribute="bottom" constant="10" id="Kh0-oR-FhX"/>
+                            <constraint firstItem="S9K-Kb-Oz4" firstAttribute="leading" secondItem="12H-kn-mhQ" secondAttribute="leading" constant="30" id="Nh0-Bf-Xzc"/>
+                            <constraint firstItem="r8L-ND-4cQ" firstAttribute="leading" secondItem="S9K-Kb-Oz4" secondAttribute="trailing" constant="30" id="TLm-F3-thQ"/>
+                            <constraint firstItem="g8i-K2-b7o" firstAttribute="leading" secondItem="SDG-y4-Hob" secondAttribute="trailing" constant="15" id="Vqi-3r-lX2"/>
+                            <constraint firstItem="SDG-y4-Hob" firstAttribute="leading" secondItem="r8L-ND-4cQ" secondAttribute="trailing" constant="5" id="ZmZ-Ex-YPt"/>
+                            <constraint firstItem="qH7-4J-c1I" firstAttribute="top" secondItem="rSI-ez-XaY" secondAttribute="bottom" constant="10" id="bk9-UK-dUQ"/>
+                            <constraint firstItem="qH7-4J-c1I" firstAttribute="centerY" secondItem="S9K-Kb-Oz4" secondAttribute="centerY" id="cdN-Ew-Y5W"/>
+                            <constraint firstItem="SDG-y4-Hob" firstAttribute="centerY" secondItem="r8L-ND-4cQ" secondAttribute="centerY" id="gLK-fQ-MR5"/>
+                            <constraint firstItem="rSI-ez-XaY" firstAttribute="leading" secondItem="S9K-Kb-Oz4" secondAttribute="trailing" constant="30" id="iCm-gf-6c0"/>
+                            <constraint firstItem="kbS-0P-LV7" firstAttribute="centerY" secondItem="r8L-ND-4cQ" secondAttribute="centerY" id="joM-Rp-Kov"/>
+                            <constraint firstItem="qH7-4J-c1I" firstAttribute="leading" secondItem="S9K-Kb-Oz4" secondAttribute="trailing" constant="30" id="mbn-YR-7Em"/>
+                            <constraint firstItem="S9K-Kb-Oz4" firstAttribute="top" secondItem="12H-kn-mhQ" secondAttribute="top" constant="30" id="mgK-qf-975"/>
+                            <constraint firstItem="g8i-K2-b7o" firstAttribute="centerY" secondItem="r8L-ND-4cQ" secondAttribute="centerY" id="qU2-UA-fa9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="supplementImageView" destination="S9K-Kb-Oz4" id="sJ4-ru-9bZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qgA-I6-R98" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4076.811594202899" y="-192.1875"/>
+        </scene>
         <!--Alarm Tap View Controller-->
         <scene sceneID="WBI-Ea-FtI">
             <objects>
@@ -487,6 +570,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="alarmImageView" destination="Uzu-K1-DdM" id="B1g-fJ-ubx"/>
+                                            <outlet property="alarmLabel" destination="roM-KI-yNN" id="qdF-41-CEt"/>
                                             <outlet property="brandLabel" destination="7sz-5T-fEC" id="KIc-TP-eNT"/>
                                             <outlet property="supplementImageView" destination="R70-I4-btv" id="obp-y9-kpn"/>
                                             <outlet property="supplementLabel" destination="Ard-qA-eXb" id="Vj7-5X-0Rb"/>

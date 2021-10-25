@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD27D2F22726587500476D3B /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27D2F02726587500476D3B /* MenuBarCell.swift */; };
+		CD27D2F32726587500476D3B /* MenuBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27D2F12726587500476D3B /* MenuBarCell.xib */; };
+		CD27D2F52726594900476D3B /* SupplementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27D2F42726594900476D3B /* SupplementDetailViewController.swift */; };
+		CD27D2F827266C3E00476D3B /* NutrientsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27D2F627266C3E00476D3B /* NutrientsCell.swift */; };
+		CD27D2F927266C3E00476D3B /* NutrientsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27D2F727266C3E00476D3B /* NutrientsCell.xib */; };
+		CD27D2FC27266C4F00476D3B /* InformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27D2FA27266C4F00476D3B /* InformationCell.swift */; };
+		CD27D2FD27266C4F00476D3B /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27D2FB27266C4F00476D3B /* InformationCell.xib */; };
+		CD27D30027266C6000476D3B /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27D2FE27266C6000476D3B /* ReviewCell.swift */; };
+		CD27D30127266C6000476D3B /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27D2FF27266C6000476D3B /* ReviewCell.xib */; };
 		CD576CE3270C585A009DB579 /* MainPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD576CE2270C585A009DB579 /* MainPage.storyboard */; };
 		CD576CE5270C5DA0009DB579 /* SupplementTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */; };
 		CD576CE7270C5E43009DB579 /* AlarmTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */; };
@@ -27,10 +36,12 @@
 		CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA0DC592703906C009BBFFF /* MainPage.swift */; };
 		CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229C82712D02900A534FE /* CategoryViewController.swift */; };
 		CDA229CB2712F0A900A534FE /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */; };
+		CDAC52B2272562EF009D3156 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAC52B1272562EF009D3156 /* MenuBar.swift */; };
 		CDC32762271332120055A05D /* Nutrient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC32761271332120055A05D /* Nutrient.swift */; };
 		CDC806C427103024003F6398 /* AlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC806C327103024003F6398 /* AlarmDetailViewController.swift */; };
 		CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDA4732270A571E00549441 /* FindInfoViewController.swift */; };
 		CDDA4735270A571F00549441 /* FindInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDDA4733270A571E00549441 /* FindInfoViewController.xib */; };
+		CDFA525C271EFCEF00B32E2B /* MySupplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFA525B271EFCEF00B32E2B /* MySupplement.swift */; };
 		CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFE1704270997B300BB15C2 /* SignUpViewController.swift */; };
 		CDFE1707270997B300BB15C2 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDFE1705270997B300BB15C2 /* SignUpViewController.xib */; };
 /* End PBXBuildFile section */
@@ -53,6 +64,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD27D2F02726587500476D3B /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
+		CD27D2F12726587500476D3B /* MenuBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuBarCell.xib; sourceTree = "<group>"; };
+		CD27D2F42726594900476D3B /* SupplementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementDetailViewController.swift; sourceTree = "<group>"; };
+		CD27D2F627266C3E00476D3B /* NutrientsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrientsCell.swift; sourceTree = "<group>"; };
+		CD27D2F727266C3E00476D3B /* NutrientsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NutrientsCell.xib; sourceTree = "<group>"; };
+		CD27D2FA27266C4F00476D3B /* InformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCell.swift; sourceTree = "<group>"; };
+		CD27D2FB27266C4F00476D3B /* InformationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
+		CD27D2FE27266C6000476D3B /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		CD27D2FF27266C6000476D3B /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		CD576CE2270C585A009DB579 /* MainPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainPage.storyboard; sourceTree = "<group>"; };
 		CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementTapViewController.swift; sourceTree = "<group>"; };
 		CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTapViewController.swift; sourceTree = "<group>"; };
@@ -75,11 +95,13 @@
 		CDA0DC592703906C009BBFFF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		CDA229C82712D02900A534FE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
+		CDAC52B1272562EF009D3156 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		CDC32761271332120055A05D /* Nutrient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrient.swift; sourceTree = "<group>"; };
 		CDC806C327103024003F6398 /* AlarmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailViewController.swift; sourceTree = "<group>"; };
 		CDC9C6FE270A3B45004A8477 /* PillSoGood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PillSoGood.entitlements; sourceTree = "<group>"; };
 		CDDA4732270A571E00549441 /* FindInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindInfoViewController.swift; sourceTree = "<group>"; };
 		CDDA4733270A571E00549441 /* FindInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindInfoViewController.xib; sourceTree = "<group>"; };
+		CDFA525B271EFCEF00B32E2B /* MySupplement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySupplement.swift; sourceTree = "<group>"; };
 		CDFE1704270997B300BB15C2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CDFE1705270997B300BB15C2 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,11 +163,13 @@
 				CDA229C72710A82B00A534FE /* login */,
 				CD576CE2270C585A009DB579 /* MainPage.storyboard */,
 				CDA0DC592703906C009BBFFF /* MainPage.swift */,
-				CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */,
 				CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */,
 				CDA229C82712D02900A534FE /* CategoryViewController.swift */,
+				CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */,
+				CDAC52B0272562CB009D3156 /* SupplementDetail */,
 				CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */,
 				CDC806C327103024003F6398 /* AlarmDetailViewController.swift */,
+				CDFA525B271EFCEF00B32E2B /* MySupplement.swift */,
 				CD576CE8270C5E78009DB579 /* MyPageTapViewController.swift */,
 				CD6812692702E29A00F6D2C4 /* Assets.xcassets */,
 				CD68126B2702E29A00F6D2C4 /* LaunchScreen.storyboard */,
@@ -182,6 +206,23 @@
 				CDDA4733270A571E00549441 /* FindInfoViewController.xib */,
 			);
 			path = login;
+			sourceTree = "<group>";
+		};
+		CDAC52B0272562CB009D3156 /* SupplementDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CD27D2F42726594900476D3B /* SupplementDetailViewController.swift */,
+				CDAC52B1272562EF009D3156 /* MenuBar.swift */,
+				CD27D2F02726587500476D3B /* MenuBarCell.swift */,
+				CD27D2F12726587500476D3B /* MenuBarCell.xib */,
+				CD27D2F627266C3E00476D3B /* NutrientsCell.swift */,
+				CD27D2F727266C3E00476D3B /* NutrientsCell.xib */,
+				CD27D2FA27266C4F00476D3B /* InformationCell.swift */,
+				CD27D2FB27266C4F00476D3B /* InformationCell.xib */,
+				CD27D2FE27266C6000476D3B /* ReviewCell.swift */,
+				CD27D2FF27266C6000476D3B /* ReviewCell.xib */,
+			);
+			path = SupplementDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,8 +331,12 @@
 			files = (
 				CD68126D2702E29A00F6D2C4 /* LaunchScreen.storyboard in Resources */,
 				CD68126A2702E29A00F6D2C4 /* Assets.xcassets in Resources */,
+				CD27D2F32726587500476D3B /* MenuBarCell.xib in Resources */,
 				CD576CE3270C585A009DB579 /* MainPage.storyboard in Resources */,
+				CD27D2FD27266C4F00476D3B /* InformationCell.xib in Resources */,
 				CD6812652702E29800F6D2C4 /* Main.storyboard in Resources */,
+				CD27D30127266C6000476D3B /* ReviewCell.xib in Resources */,
+				CD27D2F927266C3E00476D3B /* NutrientsCell.xib in Resources */,
 				CDFE1707270997B300BB15C2 /* SignUpViewController.xib in Resources */,
 				CDA0DC562703675B009BBFFF /* FredokaOne.ttf in Resources */,
 				CDDA4735270A571F00549441 /* FindInfoViewController.xib in Resources */,
@@ -321,18 +366,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD27D2F52726594900476D3B /* SupplementDetailViewController.swift in Sources */,
 				CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */,
 				CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */,
+				CDAC52B2272562EF009D3156 /* MenuBar.swift in Sources */,
 				CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */,
 				CDA229CB2712F0A900A534FE /* CategoryDetailViewController.swift in Sources */,
+				CD27D2FC27266C4F00476D3B /* InformationCell.swift in Sources */,
+				CDFA525C271EFCEF00B32E2B /* MySupplement.swift in Sources */,
 				CDC32762271332120055A05D /* Nutrient.swift in Sources */,
 				CD6812622702E29800F6D2C4 /* ViewController.swift in Sources */,
 				CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */,
 				CD68125E2702E29800F6D2C4 /* AppDelegate.swift in Sources */,
 				CD6812602702E29800F6D2C4 /* SceneDelegate.swift in Sources */,
+				CD27D30027266C6000476D3B /* ReviewCell.swift in Sources */,
 				CD6812682702E29900F6D2C4 /* PillSoGood.xcdatamodeld in Sources */,
+				CD27D2F22726587500476D3B /* MenuBarCell.swift in Sources */,
 				CD576CE9270C5E78009DB579 /* MyPageTapViewController.swift in Sources */,
 				CD576CE7270C5E43009DB579 /* AlarmTapViewController.swift in Sources */,
+				CD27D2F827266C3E00476D3B /* NutrientsCell.swift in Sources */,
 				CDC806C427103024003F6398 /* AlarmDetailViewController.swift in Sources */,
 				CD576CE5270C5DA0009DB579 /* SupplementTapViewController.swift in Sources */,
 			);
