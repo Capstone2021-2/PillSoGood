@@ -9,6 +9,8 @@ import UIKit
 
 class SupplementDetailViewController: UIViewController, CustomMenuBarDelegate {
     
+    var supplementInfo: supplement? = nil
+    
     var viewList = ["NutrientsCell", "InformationCell", "ReviewCell"]
     
     func customMenuBar(scrollTo index: Int) {
@@ -17,6 +19,12 @@ class SupplementDetailViewController: UIViewController, CustomMenuBarDelegate {
     }
     
     @IBOutlet weak var supplementImageView: UIImageView!
+    @IBOutlet weak var supplementTitle: UILabel!
+    @IBOutlet weak var brand: UILabel!
+    @IBOutlet weak var score: UILabel!
+    @IBOutlet weak var theNumOfPeople: UILabel!
+    
+    
     var pageCollectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
@@ -30,8 +38,16 @@ class SupplementDetailViewController: UIViewController, CustomMenuBarDelegate {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = false
+        setupSupplementInfo()
         setupCustomTabBar()
         setupPageCollectionView()
+    }
+    
+    func setupSupplementInfo() {
+        self.supplementTitle.text = supplementInfo?.name
+        self.brand.text = supplementInfo?.company
+        self.score.text = supplementInfo?.avg_rating?.description
+        self.theNumOfPeople.text = "0"
     }
     
     func setupCustomTabBar(){
@@ -69,6 +85,15 @@ extension SupplementDetailViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewList[indexPath.row], for: indexPath) as! InformationCell
+            cell.sugUse.text = self.supplementInfo?.sug_use
+            cell.expDate.text = self.supplementInfo?.exp_date
+            cell.priFunc.text = self.supplementInfo?.pri_func
+            cell.warning.text = self.supplementInfo?.warning
+            
+            return cell
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: viewList[indexPath.row], for: indexPath)
         return cell
     }

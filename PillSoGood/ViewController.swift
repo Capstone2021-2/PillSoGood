@@ -46,10 +46,9 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let token = UserDefaults.standard.string(forKey: "token") {
-            self.moveToMain()
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDefaults.standard.string(forKey: "token") != nil {
+            moveToMain()
         }
     }
     

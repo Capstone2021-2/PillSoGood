@@ -9,9 +9,12 @@ import UIKit
 
 class NutrientsCell: UICollectionViewCell {
 
+    @IBOutlet weak var nutrientLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var percentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .blue
     }
 
 }

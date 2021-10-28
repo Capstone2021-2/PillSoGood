@@ -10,16 +10,6 @@ import UIKit
 class MyPageTapViewController: UIViewController {
     
     
-    @IBOutlet weak var profileView: UIView! {
-        didSet {
-            profileView.layer.shadowOffset = CGSize(width: 0, height: 1)
-            profileView.layer.shadowOpacity = 0.2
-            profileView.layer.shadowRadius = 10
-            profileView.layer.shadowColor = UIColor.lightGray.cgColor
-            
-            profileView.layer.masksToBounds = false
-        }
-    }
     @IBOutlet weak var user_nickname: UILabel!
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
@@ -30,6 +20,12 @@ class MyPageTapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults.standard.string(forKey: "token") == nil {
+            let alertVC = self.storyboard!.instantiateViewController(withIdentifier: "LoginAlertViewController") as! LoginAlertViewController
+            alertVC.modalPresentationStyle = .overCurrentContext
+            self.present(alertVC, animated: true, completion: nil)
+        }
 
         if let nickname = UserDefaults.standard.string(forKey: "nickname") {
             user_nickname.text = nickname + " 님"
@@ -47,7 +43,17 @@ class MyPageTapViewController: UIViewController {
         self.tabBarItem.title = nil
     }
     
+    
+    // 개인정보수정 버튼 클릭 시
     @IBAction func moveToMyInfo(_ sender: Any) {
+        if let detailVC = self.storyboard!.instantiateViewController(identifier: "EditMyInformation") as? EditMyInformation {
+            detailVC.title = "개인정보수정"
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            backBarButtonItem.tintColor = .lightGray
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
         
     }
     
@@ -61,6 +67,12 @@ class MyPageTapViewController: UIViewController {
             loginPage.modalPresentationStyle = .fullScreen
             self.present(loginPage, animated: true, completion: nil)
         }
+    }
+    
+    
+    // 화면 터치 시 키보드 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
 }

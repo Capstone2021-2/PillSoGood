@@ -25,6 +25,14 @@ class AlarmTapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if UserDefaults.standard.string(forKey: "token") == nil {
+            let alertVC = self.storyboard!.instantiateViewController(withIdentifier: "LoginAlertViewController") as! LoginAlertViewController
+            alertVC.modalPresentationStyle = .overCurrentContext
+            self.present(alertVC, animated: true, completion: nil)
+        }
+        
+        self.navigationItem.title = "나의 복용 제품"
         if let temp = UserDefaults.standard.value(forKey: "MySupplements") as? Data {
             mySupplements = try? PropertyListDecoder().decode([MySupplement].self, from: temp)
         } else {
