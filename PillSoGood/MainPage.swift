@@ -11,11 +11,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         self.tabBar.tintColor = UIColor(red: 133/255, green: 177/255, blue: 248/255, alpha: 1)
         
+        self.navigationController?.isNavigationBarHidden = true
     }
-    
-//    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//
-//    }
     
 }
 
@@ -36,6 +33,17 @@ class MainPage: UIViewController {
     // 화면 내려갈 시 탭바 아이템 수정
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarItem.title = nil
+    }
+    
+    @IBAction func movesurvey(_ sender: UIButton) {
+        if let surveyVC = UIStoryboard(name: "MainPage", bundle: nil).instantiateViewController(withIdentifier: "SurveyViewController") as? SurveyViewController {
+            surveyVC.title = "체질 검사"
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            backBarButtonItem.tintColor = .gray
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+            self.navigationController?.pushViewController(surveyVC, animated: true)
+        }
+        
     }
 
 }

@@ -41,6 +41,8 @@
 		CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229C82712D02900A534FE /* CategoryViewController.swift */; };
 		CDA229CB2712F0A900A534FE /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */; };
 		CDAC52B2272562EF009D3156 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAC52B1272562EF009D3156 /* MenuBar.swift */; };
+		CDB05144272B9B8F00436207 /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB05142272B9B8F00436207 /* SurveyCell.swift */; };
+		CDB05145272B9B8F00436207 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB05143272B9B8F00436207 /* SurveyViewController.swift */; };
 		CDC32762271332120055A05D /* Nutrient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC32761271332120055A05D /* Nutrient.swift */; };
 		CDC5B652272AB9C400598710 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC5B651272AB9C400598710 /* Model.swift */; };
 		CDC806C427103024003F6398 /* AlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC806C327103024003F6398 /* AlarmDetailViewController.swift */; };
@@ -105,6 +107,8 @@
 		CDA229C82712D02900A534FE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		CDAC52B1272562EF009D3156 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		CDB05142272B9B8F00436207 /* SurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
+		CDB05143272B9B8F00436207 /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
 		CDC32761271332120055A05D /* Nutrient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrient.swift; sourceTree = "<group>"; };
 		CDC5B651272AB9C400598710 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CDC806C327103024003F6398 /* AlarmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +182,7 @@
 				CD6812612702E29800F6D2C4 /* ViewController.swift */,
 				CD6812632702E29800F6D2C4 /* Main.storyboard */,
 				CDC32761271332120055A05D /* Nutrient.swift */,
+				CDB05141272B9B7600436207 /* Survey */,
 				CDA229C72710A82B00A534FE /* login */,
 				CD576CE2270C585A009DB579 /* MainPage.storyboard */,
 				CDA0DC592703906C009BBFFF /* MainPage.swift */,
@@ -246,6 +251,15 @@
 				CD29612F2727F35E00D0D06A /* ReviewFormCell.xib */,
 			);
 			path = SupplementDetail;
+			sourceTree = "<group>";
+		};
+		CDB05141272B9B7600436207 /* Survey */ = {
+			isa = PBXGroup;
+			children = (
+				CDB05142272B9B8F00436207 /* SurveyCell.swift */,
+				CDB05143272B9B8F00436207 /* SurveyViewController.swift */,
+			);
+			path = Survey;
 			sourceTree = "<group>";
 		};
 		CDC5B650272AB9B700598710 /* model */ = {
@@ -399,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD27D2F52726594900476D3B /* SupplementDetailViewController.swift in Sources */,
+				CDB05144272B9B8F00436207 /* SurveyCell.swift in Sources */,
 				CDA1558A27291C39008D8223 /* LoginAlertViewController.swift in Sources */,
 				CD2961302727F35E00D0D06A /* ReviewFormCell.swift in Sources */,
 				CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */,
@@ -413,6 +428,7 @@
 				CD6812622702E29800F6D2C4 /* ViewController.swift in Sources */,
 				CD29612D2727E67100D0D06A /* EditMyInformation.swift in Sources */,
 				CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */,
+				CDB05145272B9B8F00436207 /* SurveyViewController.swift in Sources */,
 				CD68125E2702E29800F6D2C4 /* AppDelegate.swift in Sources */,
 				CD6812602702E29800F6D2C4 /* SceneDelegate.swift in Sources */,
 				CD27D30027266C6000476D3B /* ReviewCell.swift in Sources */,

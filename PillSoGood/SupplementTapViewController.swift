@@ -168,7 +168,7 @@ extension SupplementTapViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return UITableView.automaticDimension
     }
     
     

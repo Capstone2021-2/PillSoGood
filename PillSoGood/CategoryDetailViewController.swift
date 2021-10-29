@@ -18,13 +18,15 @@ class SupplementCell: UITableViewCell {
 class CategoryDetailViewController: UIViewController {
 
     @IBOutlet weak var supplementTableView: UITableView!
-    @IBOutlet weak var descriptionView: UIView! {
-        didSet {
-            descriptionView.layer.cornerRadius = 10
-            descriptionView.layer.borderWidth = 1
-            descriptionView.layer.borderColor = UIColor(red: 131/255, green: 177/255, blue: 248/255, alpha: 1).cgColor
-        }
-    }
+    @IBOutlet weak var descriptionView: UIView!
+//    {
+//        didSet {
+//            descriptionView.layer.cornerRadius = 10
+//            descriptionView.layer.borderWidth = 1
+//            descriptionView.layer.borderColor = UIColor(red: 131/255, green: 177/255, blue: 248/255, alpha: 1).cgColor
+//        }
+//    }
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var pk: Int? = nil
     var name: String? = nil
@@ -35,9 +37,28 @@ class CategoryDetailViewController: UIViewController {
         super.viewDidLoad()
         
         getData()
-        
+        setupLabel()
         supplementTableView.delegate = self
         supplementTableView.dataSource = self
+    }
+    
+    func setupLabel() {
+        let str: String
+        switch categoryType {
+        case 0:
+            str = name! + " 영양소가 포함된 영양제"
+        case 1:
+            str = name! + " 건강에 도움이 되는 영양제"
+        case 2:
+            str = name! + " 체질인 사람에게 도움이 되는 영양제"
+        case 3:
+            str = name! + "의 영양제 제품"
+        default:
+            return
+        }
+        let attributedStr = NSMutableAttributedString(string: str)
+        attributedStr.addAttribute(.foregroundColor, value: UIColor.red, range: (str as NSString).range(of: name!))
+        self.descriptionLabel.attributedText = attributedStr
     }
     
     func getData() {

@@ -34,13 +34,13 @@ class MyPageTapViewController: UIViewController {
     
     // 화면 클릭 시 탭바 아이템 수정
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarItem.title = "마이페이지"
-        self.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
+        self.navigationController?.tabBarItem.title = "마이페이지"
+        self.navigationController?.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
     }
     
     // 화면 내려갈 시 탭바 아이템 수정
     override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarItem.title = nil
+        self.navigationController?.tabBarItem.title = nil
     }
     
     
