@@ -618,7 +618,7 @@
 				CODE_SIGN_ENTITLEMENTS = PillSoGood/PillSoGood.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 593MZB38Y6;
+				DEVELOPMENT_TEAM = 52L68GCZQD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PillSoGood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -631,7 +631,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGood;
+				PRODUCT_BUNDLE_IDENTIFIER = "kr.co.test.PillSoGood-hs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -647,7 +647,7 @@
 				CODE_SIGN_ENTITLEMENTS = PillSoGood/PillSoGood.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 593MZB38Y6;
+				DEVELOPMENT_TEAM = 52L68GCZQD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PillSoGood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -660,7 +660,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.test.PillSoGood;
+				PRODUCT_BUNDLE_IDENTIFIER = "kr.co.test.PillSoGood-hs";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -12,7 +12,7 @@ class SurveyCell: UITableViewCell{
     @IBOutlet var radioButtons: [UIButton]!
     
     var indexOfOneAndOnly: Int?
-    
+    //test
     @IBAction func touchButton(_ sender: UIButton) {
         if indexOfOneAndOnly != nil {
             if !sender.isSelected {
