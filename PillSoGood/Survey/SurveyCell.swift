@@ -8,6 +8,7 @@
 import UIKit
 
 class SurveyCell: UITableViewCell{
+    // 설문지 셀
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var radioButtons: [UIButton]!
     
