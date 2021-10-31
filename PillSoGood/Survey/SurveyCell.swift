@@ -12,6 +12,7 @@ class SurveyCell: UITableViewCell{
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var radioButtons: [UIButton]!
     
+    //흠.
     var indexOfOneAndOnly: Int?
     // 이게뭐람...
     //test44
