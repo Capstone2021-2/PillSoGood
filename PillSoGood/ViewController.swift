@@ -20,6 +20,7 @@ struct Response: Codable {
     let login_id: String?
     let email: String?
     let nickname: String?
+    let pk: Int?
 }
 
 class ViewController: UIViewController {
@@ -100,6 +101,7 @@ class ViewController: UIViewController {
                     UserDefaults.standard.set(result.token, forKey: "token")
                     UserDefaults.standard.set(result.email, forKey: "email")
                     UserDefaults.standard.set(result.nickname, forKey: "nickname")
+                    UserDefaults.standard.set(result.pk, forKey: "pk")
                 }
             } catch {
                 print("error")

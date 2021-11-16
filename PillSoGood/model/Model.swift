@@ -32,11 +32,13 @@ struct supplement: Codable {
     let pri_func: String?   // 주요기능
     let raw_material: String?   // 원재료
     let avg_rating: Float?  // 평점
+    let review_num: Int
 }
 
 struct nutrientFacts: Codable {
     let supplement: Int
     let nutrient: Int
+    let amount: Float
 }
 
 struct brand: Codable {
@@ -46,4 +48,14 @@ struct brand: Codable {
 struct goodForOrgan: Codable {
     let organ: String
     let nutrient: String
+}
+
+struct goodForLifeStyle: Codable {
+    let life_style: String
+    let nutrient: String
+}
+
+struct takingSupp: Codable {
+    let id: Int
+    let supplement_pk: Int
 }

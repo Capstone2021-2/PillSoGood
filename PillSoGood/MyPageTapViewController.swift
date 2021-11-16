@@ -36,6 +36,7 @@ class MyPageTapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.tabBarItem.title = "마이페이지"
         self.navigationController?.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     // 화면 내려갈 시 탭바 아이템 수정
@@ -56,6 +57,18 @@ class MyPageTapViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func moveToReview(_ sender: Any) {
+        if let detailVC = self.storyboard!.instantiateViewController(identifier: "ReviewPageViewController") as? ReviewPageViewController {
+            detailVC.title = "리뷰 관리"
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            backBarButtonItem.tintColor = .lightGray
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
     
     // 로그아웃
     @IBAction func logout(_ sender: Any) {

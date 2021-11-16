@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD06D8D5273CF95A00130E42 /* SurveyResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06D8D4273CF95A00130E42 /* SurveyResultViewController.swift */; };
 		CD27D2F22726587500476D3B /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27D2F02726587500476D3B /* MenuBarCell.swift */; };
 		CD27D2F32726587500476D3B /* MenuBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD27D2F12726587500476D3B /* MenuBarCell.xib */; };
 		CD27D2F52726594900476D3B /* SupplementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27D2F42726594900476D3B /* SupplementDetailViewController.swift */; };
@@ -19,6 +20,11 @@
 		CD29612D2727E67100D0D06A /* EditMyInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD29612C2727E67100D0D06A /* EditMyInformation.swift */; };
 		CD2961302727F35E00D0D06A /* ReviewFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD29612E2727F35E00D0D06A /* ReviewFormCell.swift */; };
 		CD2961312727F35E00D0D06A /* ReviewFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29612F2727F35E00D0D06A /* ReviewFormCell.xib */; };
+		CD4942E7273BCD640028307D /* LifeStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4942E6273BCD640028307D /* LifeStyleViewController.swift */; };
+		CD4942E9273BD50A0028307D /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4942E8273BD50A0028307D /* ApiRequest.swift */; };
+		CD4942EB273BF28D0028307D /* LifeStyleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4942EA273BF28D0028307D /* LifeStyleDetailViewController.swift */; };
+		CD4942EE273BF89D0028307D /* SupplementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4942EC273BF89D0028307D /* SupplementCell.swift */; };
+		CD4942EF273BF89D0028307D /* SupplementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4942ED273BF89D0028307D /* SupplementCell.xib */; };
 		CD576CE3270C585A009DB579 /* MainPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD576CE2270C585A009DB579 /* MainPage.storyboard */; };
 		CD576CE5270C5DA0009DB579 /* SupplementTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */; };
 		CD576CE7270C5E43009DB579 /* AlarmTapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */; };
@@ -33,6 +39,7 @@
 		CD6812782702E29A00F6D2C4 /* PillSoGoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812772702E29A00F6D2C4 /* PillSoGoodTests.swift */; };
 		CD6812822702E29A00F6D2C4 /* PillSoGoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812812702E29A00F6D2C4 /* PillSoGoodUITests.swift */; };
 		CD6812842702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */; };
+		CD7502C1273BA810009FF65B /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7502C0273BA810009FF65B /* WriteReviewViewController.swift */; };
 		CDA0DC562703675B009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
 		CDA0DC5727036868009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
 		CDA0DC5827036869009BBFFF /* FredokaOne.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CDA0DC552703675B009BBFFF /* FredokaOne.ttf */; };
@@ -40,9 +47,15 @@
 		CDA1558A27291C39008D8223 /* LoginAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1558927291C39008D8223 /* LoginAlertViewController.swift */; };
 		CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229C82712D02900A534FE /* CategoryViewController.swift */; };
 		CDA229CB2712F0A900A534FE /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */; };
+		CDAAE5E2273B7BA0003EEC2D /* ReviewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAAE5E1273B7BA0003EEC2D /* ReviewPageViewController.swift */; };
+		CDAAE5E9273B7DDF003EEC2D /* ReviewXCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAAE5E7273B7DDF003EEC2D /* ReviewXCell.swift */; };
+		CDAAE5EA273B7DDF003EEC2D /* ReviewXCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAAE5E8273B7DDF003EEC2D /* ReviewXCell.xib */; };
+		CDAAE5ED273B805F003EEC2D /* ReviewOCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAAE5EB273B805F003EEC2D /* ReviewOCell.swift */; };
+		CDAAE5EE273B805F003EEC2D /* ReviewOCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDAAE5EC273B805F003EEC2D /* ReviewOCell.xib */; };
 		CDAC52B2272562EF009D3156 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAC52B1272562EF009D3156 /* MenuBar.swift */; };
 		CDB05144272B9B8F00436207 /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB05142272B9B8F00436207 /* SurveyCell.swift */; };
 		CDB05145272B9B8F00436207 /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB05143272B9B8F00436207 /* SurveyViewController.swift */; };
+		CDB5EC242738EAB0007D6C15 /* Extension_UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB5EC232738EAB0007D6C15 /* Extension_UIView.swift */; };
 		CDC32762271332120055A05D /* Nutrient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC32761271332120055A05D /* Nutrient.swift */; };
 		CDC5B652272AB9C400598710 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC5B651272AB9C400598710 /* Model.swift */; };
 		CDC806C427103024003F6398 /* AlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC806C327103024003F6398 /* AlarmDetailViewController.swift */; };
@@ -71,6 +84,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD06D8D4273CF95A00130E42 /* SurveyResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResultViewController.swift; sourceTree = "<group>"; };
 		CD27D2F02726587500476D3B /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
 		CD27D2F12726587500476D3B /* MenuBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuBarCell.xib; sourceTree = "<group>"; };
 		CD27D2F42726594900476D3B /* SupplementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementDetailViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +97,11 @@
 		CD29612C2727E67100D0D06A /* EditMyInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyInformation.swift; sourceTree = "<group>"; };
 		CD29612E2727F35E00D0D06A /* ReviewFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFormCell.swift; sourceTree = "<group>"; };
 		CD29612F2727F35E00D0D06A /* ReviewFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewFormCell.xib; sourceTree = "<group>"; };
+		CD4942E6273BCD640028307D /* LifeStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStyleViewController.swift; sourceTree = "<group>"; };
+		CD4942E8273BD50A0028307D /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
+		CD4942EA273BF28D0028307D /* LifeStyleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStyleDetailViewController.swift; sourceTree = "<group>"; };
+		CD4942EC273BF89D0028307D /* SupplementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementCell.swift; sourceTree = "<group>"; };
+		CD4942ED273BF89D0028307D /* SupplementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupplementCell.xib; sourceTree = "<group>"; };
 		CD576CE2270C585A009DB579 /* MainPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainPage.storyboard; sourceTree = "<group>"; };
 		CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementTapViewController.swift; sourceTree = "<group>"; };
 		CD576CE6270C5E43009DB579 /* AlarmTapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTapViewController.swift; sourceTree = "<group>"; };
@@ -101,14 +120,21 @@
 		CD68127D2702E29A00F6D2C4 /* PillSoGoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PillSoGoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6812812702E29A00F6D2C4 /* PillSoGoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSoGoodUITests.swift; sourceTree = "<group>"; };
 		CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSoGoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CD7502C0273BA810009FF65B /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		CDA0DC552703675B009BBFFF /* FredokaOne.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FredokaOne.ttf; sourceTree = "<group>"; };
 		CDA0DC592703906C009BBFFF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		CDA1558927291C39008D8223 /* LoginAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlertViewController.swift; sourceTree = "<group>"; };
 		CDA229C82712D02900A534FE /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
+		CDAAE5E1273B7BA0003EEC2D /* ReviewPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPageViewController.swift; sourceTree = "<group>"; };
+		CDAAE5E7273B7DDF003EEC2D /* ReviewXCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewXCell.swift; sourceTree = "<group>"; };
+		CDAAE5E8273B7DDF003EEC2D /* ReviewXCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewXCell.xib; sourceTree = "<group>"; };
+		CDAAE5EB273B805F003EEC2D /* ReviewOCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOCell.swift; sourceTree = "<group>"; };
+		CDAAE5EC273B805F003EEC2D /* ReviewOCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewOCell.xib; sourceTree = "<group>"; };
 		CDAC52B1272562EF009D3156 /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		CDB05142272B9B8F00436207 /* SurveyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
 		CDB05143272B9B8F00436207 /* SurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyViewController.swift; sourceTree = "<group>"; };
+		CDB5EC232738EAB0007D6C15 /* Extension_UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_UIView.swift; sourceTree = "<group>"; };
 		CDC32761271332120055A05D /* Nutrient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutrient.swift; sourceTree = "<group>"; };
 		CDC5B651272AB9C400598710 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		CDC806C327103024003F6398 /* AlarmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +175,12 @@
 			isa = PBXGroup;
 			children = (
 				CD29612C2727E67100D0D06A /* EditMyInformation.swift */,
+				CDAAE5E1273B7BA0003EEC2D /* ReviewPageViewController.swift */,
+				CDAAE5E7273B7DDF003EEC2D /* ReviewXCell.swift */,
+				CDAAE5E8273B7DDF003EEC2D /* ReviewXCell.xib */,
+				CDAAE5EB273B805F003EEC2D /* ReviewOCell.swift */,
+				CDAAE5EC273B805F003EEC2D /* ReviewOCell.xib */,
+				CD7502C0273BA810009FF65B /* WriteReviewViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -184,8 +216,11 @@
 				CDC32761271332120055A05D /* Nutrient.swift */,
 				CDB05141272B9B7600436207 /* Survey */,
 				CDA229C72710A82B00A534FE /* login */,
+				CD7502C2273BCB8E009FF65B /* Home */,
 				CD576CE2270C585A009DB579 /* MainPage.storyboard */,
 				CDA0DC592703906C009BBFFF /* MainPage.swift */,
+				CD4942EC273BF89D0028307D /* SupplementCell.swift */,
+				CD4942ED273BF89D0028307D /* SupplementCell.xib */,
 				CD576CE4270C5DA0009DB579 /* SupplementTapViewController.swift */,
 				CDA229C82712D02900A534FE /* CategoryViewController.swift */,
 				CDA229CA2712F0A900A534FE /* CategoryDetailViewController.swift */,
@@ -223,6 +258,15 @@
 			path = PillSoGoodUITests;
 			sourceTree = "<group>";
 		};
+		CD7502C2273BCB8E009FF65B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CD4942E6273BCD640028307D /* LifeStyleViewController.swift */,
+				CD4942EA273BF28D0028307D /* LifeStyleDetailViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		CDA229C72710A82B00A534FE /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +302,7 @@
 			children = (
 				CDB05142272B9B8F00436207 /* SurveyCell.swift */,
 				CDB05143272B9B8F00436207 /* SurveyViewController.swift */,
+				CD06D8D4273CF95A00130E42 /* SurveyResultViewController.swift */,
 			);
 			path = Survey;
 			sourceTree = "<group>";
@@ -266,6 +311,8 @@
 			isa = PBXGroup;
 			children = (
 				CDC5B651272AB9C400598710 /* Model.swift */,
+				CDB5EC232738EAB0007D6C15 /* Extension_UIView.swift */,
+				CD4942E8273BD50A0028307D /* ApiRequest.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -375,9 +422,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD68126D2702E29A00F6D2C4 /* LaunchScreen.storyboard in Resources */,
+				CD4942EF273BF89D0028307D /* SupplementCell.xib in Resources */,
 				CD68126A2702E29A00F6D2C4 /* Assets.xcassets in Resources */,
 				CD27D2F32726587500476D3B /* MenuBarCell.xib in Resources */,
+				CDAAE5EA273B7DDF003EEC2D /* ReviewXCell.xib in Resources */,
 				CD576CE3270C585A009DB579 /* MainPage.storyboard in Resources */,
+				CDAAE5EE273B805F003EEC2D /* ReviewOCell.xib in Resources */,
 				CD27D2FD27266C4F00476D3B /* InformationCell.xib in Resources */,
 				CD6812652702E29800F6D2C4 /* Main.storyboard in Resources */,
 				CD27D30127266C6000476D3B /* ReviewCell.xib in Resources */,
@@ -416,22 +466,32 @@
 				CDB05144272B9B8F00436207 /* SurveyCell.swift in Sources */,
 				CDA1558A27291C39008D8223 /* LoginAlertViewController.swift in Sources */,
 				CD2961302727F35E00D0D06A /* ReviewFormCell.swift in Sources */,
+				CD4942EE273BF89D0028307D /* SupplementCell.swift in Sources */,
+				CD4942E7273BCD640028307D /* LifeStyleViewController.swift in Sources */,
 				CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */,
+				CDAAE5E2273B7BA0003EEC2D /* ReviewPageViewController.swift in Sources */,
 				CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */,
 				CDAC52B2272562EF009D3156 /* MenuBar.swift in Sources */,
 				CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */,
 				CDA229CB2712F0A900A534FE /* CategoryDetailViewController.swift in Sources */,
 				CD27D2FC27266C4F00476D3B /* InformationCell.swift in Sources */,
 				CDFA525C271EFCEF00B32E2B /* MySupplement.swift in Sources */,
+				CDAAE5ED273B805F003EEC2D /* ReviewOCell.swift in Sources */,
 				CDC5B652272AB9C400598710 /* Model.swift in Sources */,
 				CDC32762271332120055A05D /* Nutrient.swift in Sources */,
+				CD4942E9273BD50A0028307D /* ApiRequest.swift in Sources */,
 				CD6812622702E29800F6D2C4 /* ViewController.swift in Sources */,
+				CDB5EC242738EAB0007D6C15 /* Extension_UIView.swift in Sources */,
+				CDAAE5E9273B7DDF003EEC2D /* ReviewXCell.swift in Sources */,
+				CD06D8D5273CF95A00130E42 /* SurveyResultViewController.swift in Sources */,
 				CD29612D2727E67100D0D06A /* EditMyInformation.swift in Sources */,
 				CDA229C92712D02900A534FE /* CategoryViewController.swift in Sources */,
 				CDB05145272B9B8F00436207 /* SurveyViewController.swift in Sources */,
 				CD68125E2702E29800F6D2C4 /* AppDelegate.swift in Sources */,
+				CD7502C1273BA810009FF65B /* WriteReviewViewController.swift in Sources */,
 				CD6812602702E29800F6D2C4 /* SceneDelegate.swift in Sources */,
 				CD27D30027266C6000476D3B /* ReviewCell.swift in Sources */,
+				CD4942EB273BF28D0028307D /* LifeStyleDetailViewController.swift in Sources */,
 				CD6812682702E29900F6D2C4 /* PillSoGood.xcdatamodeld in Sources */,
 				CD27D2F22726587500476D3B /* MenuBarCell.swift in Sources */,
 				CD576CE9270C5E78009DB579 /* MyPageTapViewController.swift in Sources */,
@@ -618,7 +678,7 @@
 				CODE_SIGN_ENTITLEMENTS = PillSoGood/PillSoGood.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52L68GCZQD;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PillSoGood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -647,7 +707,7 @@
 				CODE_SIGN_ENTITLEMENTS = PillSoGood/PillSoGood.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 52L68GCZQD;
+				DEVELOPMENT_TEAM = 593MZB38Y6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PillSoGood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

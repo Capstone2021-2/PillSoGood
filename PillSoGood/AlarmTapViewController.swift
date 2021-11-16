@@ -21,7 +21,7 @@ class AlarmTapViewController: UIViewController {
 
     @IBOutlet weak var mySupplementTableView: UITableView!
     
-    var mySupplements:[MySupplement]!
+    var mySupplements = [MySupplement]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,61 @@ class AlarmTapViewController: UIViewController {
         
         self.navigationItem.title = "나의 복용 제품"
         if let temp = UserDefaults.standard.value(forKey: "MySupplements") as? Data {
-            mySupplements = try? PropertyListDecoder().decode([MySupplement].self, from: temp)
+            mySupplements = try! PropertyListDecoder().decode([MySupplement].self, from: temp)
+            getAdditionalData()
         } else {
-            mySupplements = [MySupplement(name: "얼라이브 멀티비타민", brand: "얼라이브", imageUrl: "", useAlarm: 0, alarms: nil, uuid: nil)]
+            getData()
         }
         mySupplementTableView.dataSource = self
         mySupplementTableView.delegate = self
+    }
+    
+    func getAdditionalData() {
+        let decoder = JSONDecoder()
+        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/user/" + UserDefaults.standard.integer(forKey: "pk").description
+        getRequest(url: url) { data in
+            if let data = try? decoder.decode([takingSupp].self, from: data!) {
+                for item in data {
+                    let url2 = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/" + item.supplement_pk.description
+                    getRequest(url: url2) { data2 in
+                        DispatchQueue.main.async {
+                            if let data2 = try? decoder.decode(supplement.self, from: data2!) {
+                                var count = 0
+                                for item in self.mySupplements {
+                                    if item.pk != data2.pk {
+                                        count += 1
+                                    }
+                                }
+                                if count == self.mySupplements.count {
+                                    self.mySupplements.append(MySupplement(pk: data2.pk, name: data2.name, brand: data2.company, imageUrl: "", useAlarm: 0, alarms: nil, uuid: nil))
+                                    self.mySupplementTableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func getData() {
+        let decoder = JSONDecoder()
+        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/user/" + UserDefaults.standard.integer(forKey: "pk").description
+        getRequest(url: url) { data in
+            if let data = try? decoder.decode([takingSupp].self, from: data!) {
+                for item in data {
+                    let url2 = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/" + item.supplement_pk.description
+                    getRequest(url: url2) { data2 in
+                        DispatchQueue.main.async {
+                            if let data2 = try? decoder.decode(supplement.self, from: data2!) {
+                                self.mySupplements.append(MySupplement(pk: data2.pk, name: data2.name, brand: data2.company, imageUrl: "", useAlarm: 0, alarms: nil, uuid: nil))
+                                self.mySupplementTableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
@@ -50,6 +99,7 @@ class AlarmTapViewController: UIViewController {
     
     // 화면 클릭 시 탭바 아이템 수정
     override func viewWillAppear(_ animated: Bool) {
+        getAdditionalData()
         self.navigationController?.tabBarItem.title = "내 영양제"
         self.navigationController?.tabBarItem.selectedImage = UIImage(systemName: "bell.fill")
     }
@@ -117,8 +167,13 @@ extension AlarmTapViewController: UITableViewDelegate, UITableViewDataSource {
     // 스와이프해서 tableView Cell 삭제
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let removeItem = mySupplements.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            mySupplements.remove(at: indexPath.row)
+            let user_pk = UserDefaults.standard.integer(forKey: "pk").description
+            let accessToken = "jwt " + UserDefaults.standard.string(forKey: "token")!
+            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/delete/" + user_pk + "/" + removeItem.pk.description
+            deleteRequest(url: url, accessToken: accessToken) { data in
+            }
         }
     }
     

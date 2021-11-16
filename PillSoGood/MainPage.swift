@@ -26,13 +26,14 @@ class MainPage: UIViewController {
     
     // 화면 클릭 시 탭바 아이템 수정
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarItem.title = "홈"
-        self.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
+        self.navigationController?.tabBarItem.title = "홈"
+        self.navigationController?.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     // 화면 내려갈 시 탭바 아이템 수정
     override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarItem.title = nil
+        self.navigationController?.tabBarItem.title = nil
     }
     
     @IBAction func movesurvey(_ sender: UIButton) {
@@ -46,4 +47,12 @@ class MainPage: UIViewController {
         
     }
 
+    @IBAction func moveToLifeStyle(_ sender: Any) {
+        if let lifeVC = UIStoryboard(name: "MainPage", bundle: nil).instantiateViewController(withIdentifier: "LifeStyleViewController") as? LifeStyleViewController {
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            backBarButtonItem.tintColor = .gray
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+            self.navigationController?.pushViewController(lifeVC, animated: true)
+        }
+    }
 }

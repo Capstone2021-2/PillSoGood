@@ -20,19 +20,17 @@ class BestSupplementCell: UITableViewCell {
 
 
 class SupplementTapViewController: UIViewController {
-
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet var categoryButtons: [UIButton]! {
-        didSet {
-            for button in categoryButtons {
-                button.layer.borderWidth = 1
-                button.layer.borderColor = UIColor(red: 131/255, green: 177/255, blue: 248/255, alpha: 1).cgColor
-                button.layer.cornerRadius = 10
-            }
-        }
-    }
+    @IBOutlet var categoryButtons: [UIButton]!
+//    {
+//        didSet {
+//            for button in categoryButtons {
+//                button.layer.borderWidth = 1
+//                button.layer.borderColor = UIColor(red: 131/255, green: 177/255, blue: 248/255, alpha: 1).cgColor
+//                button.layer.cornerRadius = 10
+//            }
+//        }
+//    }
     
     @IBOutlet weak var bestSupplementTableView: UITableView!    // 베스트 영양제 테이블뷰
     var bestSupplementList = [supplement]()
@@ -51,15 +49,11 @@ class SupplementTapViewController: UIViewController {
     
     // searchBar custom
     func setSearchBar() {
-        // UIView shadow
-        topView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        topView.layer.shadowOpacity = 0.4
-        topView.layer.shadowRadius = 1
-        topView.layer.shadowColor = UIColor.lightGray.cgColor
-        topView.layer.masksToBounds = false
-        
-        let searchBarImage = UIImage()
-        searchBar.backgroundImage = searchBarImage
+        let resultsController = UIViewController()
+        let searchController = UISearchController(searchResultsController: resultsController)
+        searchController.searchBar.placeholder = "영양제, 영양소, 브랜드 검색"
+        searchController.obscuresBackgroundDuringPresentation = true
+        self.navigationItem.searchController = searchController
         
     }
     
@@ -111,7 +105,6 @@ class SupplementTapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.tabBarItem.title = "영양제"
         self.navigationController?.tabBarItem.selectedImage = UIImage(systemName: "pills.fill")
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     // 화면 내려갈 시 탭바 아이템 수정

@@ -37,10 +37,60 @@ class SupplementDetailViewController: UIViewController, CustomMenuBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        let rightBarButtonItem = UIBarButtonItem(title: "복용제품 추가", style: .done, target: self, action: #selector(addMySupplement))
+        rightBarButtonItem.tintColor = UIColor(red: 0.27, green: 0.51, blue: 0.71, alpha: 1.00)
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
         self.navigationController?.isNavigationBarHidden = false
+        setupNutrientInfo()
         setupSupplementInfo()
         setupCustomTabBar()
         setupPageCollectionView()
+    }
+    
+    @objc func addMySupplement() {
+        let user_pk = UserDefaults.standard.integer(forKey: "pk")
+        let supplement_pk = supplementInfo!.pk
+        let param = "user_pk=\(user_pk)&supplement_pk=\(supplement_pk)"
+        let paramData = param.data(using: .utf8)
+
+        guard let url = URL(string: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/") else {
+            print("api is down")
+            return
+        }
+
+        // URLRequest 객체 정의
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = paramData
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue(String(paramData!.count), forHTTPHeaderField: "Content-Length")
+
+        URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
+            if let err = error {
+                print("An error has occured: \(err.localizedDescription)")
+                return
+            }
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: nil, message: "내 영양제에 추가가 완료되었습니다!", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+            print(response!)
+        }.resume()  // POST 전송!
+    }
+    
+    func setupNutrientInfo() {
+//        let decoder = JSONDecoder()
+//        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/supplement_to_nutrient/" + supplementInfo!.pk.description
+//        getRequest(url: url) { data in
+//            if let data = try? decoder.decode([nutrientFacts].self, from: data!) {
+//                for item in data {
+//                    let url2 = "api/nutrients/name/"
+//                }
+//            }
+//        }
     }
     
     func setupSupplementInfo() {

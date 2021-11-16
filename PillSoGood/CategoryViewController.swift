@@ -9,6 +9,16 @@ import UIKit
 
 class CategoryItemCell: UITableViewCell {
     
+    @IBOutlet weak var itemView: UIView! {
+        didSet {
+            contentView.layer.shadowColor = UIColor.lightGray.cgColor
+            contentView.layer.masksToBounds = false
+            contentView.layer.shadowOffset = CGSize(width: 2, height: 2)
+            contentView.layer.shadowRadius = 2
+            contentView.layer.shadowOpacity = 0.3
+            
+        }
+    }
     @IBOutlet weak var itemLabel: UILabel!
     
 }
@@ -24,14 +34,13 @@ class CategoryViewController: UIViewController {
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
         
-        self.navigationController?.isNavigationBarHidden = false
     }
     
     func getData() {
         let url: String
         let decoder = JSONDecoder()
-        let title = self.title
-        if title == "영양소" {
+        let title = self.title!
+        if title.contains("영양소") {
             url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/main_nutrients"
             getCategoryList(url: url) { data in
                 if let data = try? decoder.decode([nutrient].self, from: data!) {
@@ -41,7 +50,7 @@ class CategoryViewController: UIViewController {
                     }
                 }
             }
-        } else if title == "기능" {
+        } else if title.contains("기능") {
             url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/organs"
             getCategoryList(url: url) { data in
                 if let data = try? decoder.decode([organ].self, from: data!) {
@@ -51,7 +60,7 @@ class CategoryViewController: UIViewController {
                     }
                 }
             }
-        } else if title == "브랜드" {
+        } else if title.contains("브랜드") {
             getCategoryList(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/brands") { data in
                 if let data = try? decoder.decode([brand].self, from: data!) {
                     DispatchQueue.main.async {
@@ -77,15 +86,6 @@ class CategoryViewController: UIViewController {
         }.resume()
     }
 
-    
-    // 뒤로갈 때 네비게이션바 없애기
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if self.isMovingFromParent {
-            self.navigationController?.isNavigationBarHidden = true
-        }
-    }
 }
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
@@ -137,7 +137,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     

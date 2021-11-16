@@ -7,14 +7,6 @@
 
 import UIKit
 
-class SupplementCell: UITableViewCell {
-    @IBOutlet weak var supplementImageView: UIImageView!
-    @IBOutlet weak var supplementTitle: UILabel!
-    @IBOutlet weak var brand: UILabel!
-    @IBOutlet weak var score: UILabel!
-    @IBOutlet weak var theNumOfPeople: UILabel!
-}
-
 class CategoryDetailViewController: UIViewController {
 
     @IBOutlet weak var supplementTableView: UITableView!
@@ -36,10 +28,12 @@ class CategoryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getData()
-        setupLabel()
+        supplementTableView.register(UINib(nibName: "SupplementCell", bundle: nil), forCellReuseIdentifier: "SupplementCell")
         supplementTableView.delegate = self
         supplementTableView.dataSource = self
+        
+        getData()
+        setupLabel()
     }
     
     func setupLabel() {
@@ -67,19 +61,16 @@ class CategoryDetailViewController: UIViewController {
             getNutrientSupplement(pk: self.pk!)
         }
         else if categoryType == 1 {
-            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_organs/"+name!
+            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_organs_supplements/"+name!
             getCategoryList(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
-                if let data = try? decoder.decode([goodForOrgan].self, from: data!) {
-                    for nut in data {
-                        let url2 = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrients/name/"+nut.nutrient
-                        self.getCategoryList(url: url2.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { [self] data2 in
-                            if let data2 = try? decoder.decode(nutrient2.self, from: data2!) {
-                                getNutrientSupplement(pk: data2.pk)
-                            }
-                        }
+                if let data = try? decoder.decode([supplement].self, from: data!) {
+                    DispatchQueue.main.async {
+                        self.supplementList = data
+                        self.supplementTableView.reloadData()
                     }
                 }
             }
+            
         }
         else if categoryType == 2 {
             
@@ -99,7 +90,7 @@ class CategoryDetailViewController: UIViewController {
     
     func getNutrientSupplement(pk: Int) {
         let decoder = JSONDecoder()
-        getCategoryList(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/"+pk.description) { data in
+        getCategoryList(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/nutrient_to_supplement/"+pk.description) { data in
             if let data = try? decoder.decode([nutrientFacts].self, from: data!) {
                 for supp in data {
                     self.getCategoryList(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/"+supp.supplement.description) { data2 in

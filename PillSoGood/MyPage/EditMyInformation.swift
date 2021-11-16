@@ -52,11 +52,6 @@ class EditMyInformation: UIViewController {
         createPickerView()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
     // 네비게이션바 수정 버튼 클릭 시
     @objc func editingFinish() {
         var param = [String:Any]()
@@ -188,6 +183,17 @@ class EditMyInformation: UIViewController {
         userAge.inputAccessoryView = toolBar
         userConstitution.inputAccessoryView = toolBar
     }
+    
+    @IBAction func moveToSurvey(_ sender: Any) {
+        if let surveyVC = UIStoryboard(name: "MainPage", bundle: nil).instantiateViewController(withIdentifier: "SurveyViewController") as? SurveyViewController {
+            surveyVC.title = "체질 검사"
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            backBarButtonItem.tintColor = .gray
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+            self.navigationController?.pushViewController(surveyVC, animated: true)
+        }
+    }
+    
     
     @objc func pickerExit() {
         self.view.endEditing(true)

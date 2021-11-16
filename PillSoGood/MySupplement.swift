@@ -8,6 +8,7 @@
 import Foundation
 
 struct MySupplement: Codable {
+    let pk: Int
     let name: String
     let brand: String
     let imageUrl: String
