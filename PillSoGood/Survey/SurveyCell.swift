@@ -19,7 +19,8 @@ class SurveyCell: UITableViewCell{
     
     var indexPathRow: Int = -1
     var indexOfOneAndOnly: Int?
-    //test
+    // 이게뭐람...
+    //test44
     @IBAction func touchButton(_ sender: UIButton) {
         if indexOfOneAndOnly != nil {
             if !sender.isSelected {
