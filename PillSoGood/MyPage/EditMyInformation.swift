@@ -25,8 +25,8 @@ class EditMyInformation: UIViewController {
     let agesPickerView = UIPickerView()
     let constitutionPickerView = UIPickerView()
     
-    let ages = ["선택안함", "6~8세", "9~11세", "12~14세", "15~18세", "19~29세", "30~49세", "50~64세", "65~74세", "75세 이상"]
-    let constitutions = ["선택안함", "열태양", "한태양", "열소음", "한소음", "열소양", "한소양", "열태음", "한태음"]
+    let ages = ["6~8", "9~11", "12~14", "15~18", "19~29", "30~49", "50~64", "65~74", "75~"]
+    let constitutions = ["열태양", "한태양", "열소음", "한소음", "열소양", "한소양", "열태음", "한태음"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,13 @@ class EditMyInformation: UIViewController {
         if let email = UserDefaults.standard.string(forKey: "email") {
             self.userEmail.text = email
         }
+        if let gender = UserDefaults.standard.string(forKey: "gender") {
+            if gender == "여" {
+                userGender.setEnabled(true, forSegmentAt: 0)
+            } else {
+                userGender.setEnabled(true, forSegmentAt: 1)
+            }
+        }
         
         checkPassword.addTarget(self, action: #selector(confirmPassword), for: .editingChanged)
         password.addTarget(self, action: #selector(confirmPassword), for: .editingChanged)
@@ -55,52 +62,36 @@ class EditMyInformation: UIViewController {
     // 네비게이션바 수정 버튼 클릭 시
     @objc func editingFinish() {
         var param = [String:Any]()
-        if password.text?.isEmpty == false {
-            if confirmLabel.text == "확인되었습니다" && password.text!.count >= 8 {
-                let pw = self.password.text?.data(using: .utf8)!
-                let pwSHA = SHA256.hash(data: pw!)
-                let hashString = pwSHA.compactMap { String(format: "%02x", $0) }.joined()
-                param["password"] = hashString
-            } else {
-                let alert = UIAlertController(title: nil, message: "비밀번호를 확인해주세요", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-                }
-                alert.addAction(okAction)
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-        }
+        param["user_pk"] = UserDefaults.standard.string(forKey:"pk")
+//        if password.text?.isEmpty == false {
+//            if confirmLabel.text == "확인되었습니다" && password.text!.count >= 8 {
+//                let pw = self.password.text?.data(using: .utf8)!
+//                let pwSHA = SHA256.hash(data: pw!)
+//                let hashString = pwSHA.compactMap { String(format: "%02x", $0) }.joined()
+//                param["password"] = hashString
+//            } else {
+//                let alert = UIAlertController(title: nil, message: "비밀번호를 확인해주세요", preferredStyle: .alert)
+//                let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+//                }
+//                alert.addAction(okAction)
+//                self.present(alert, animated: true, completion: nil)
+//                return
+//            }
+//        }
         
-        if let nickname = userNickname {
-            param["nickname"] = nickname.text
-        }
-        
-        let gender = userGender.selectedSegmentIndex
-        switch gender {
+        switch userGender.selectedSegmentIndex {
         case 0:
-            param["gender"] = ""
+            param["gender"] = "여"
         case 1:
-            param["gender"] = "여성"
-        case 2:
-            param["gender"] = "남성"
+            param["gender"] = "남"
         default: break
         }
-        
-        if userAge.text == "선택안함" {
-            param["age"] = ""
-        } else {
-            param["age"] = userAge.text
-        }
-        
-        if userConstitution.text == "선택안함" {
-            param["constitution"] = ""
-        } else {
-            param["constitution"] = userConstitution.text
-        }
+        param["age"] = userAge.text
+        param["body_type"] = userConstitution.text
         
         let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
 
-        guard let url = URL(string: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/user/duplicate-id") else {
+        guard let url = URL(string: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/user/edit") else {
             print("api is down")
             return
         }
@@ -116,6 +107,22 @@ class EditMyInformation: UIViewController {
             if let error = Error {
                 print(error)
                 return
+            }
+            if let response = Response as? HTTPURLResponse {
+                if response.statusCode != 200 {
+                    return
+                }
+            }
+            DispatchQueue.main.async {
+                UserDefaults.standard.set(param["gender"], forKey: "gender")
+                UserDefaults.standard.set(param["age"], forKey: "age")
+                UserDefaults.standard.set(param["body_type"], forKey: "constitution")
+                let alert = UIAlertController(title: "개인정보수정 완료", message: "수정이 완료되었습니다.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
             }
         }.resume()
     }
@@ -158,12 +165,24 @@ class EditMyInformation: UIViewController {
     
     // picker view 연결
     func createPickerView() {
-        userAge.text = ages[0]
+        if let age = UserDefaults.standard.string(forKey: "age") {
+            if let index = ages.firstIndex(of: age) {
+                userAge.text = ages[index]
+            }
+        } else {
+            userAge.text = ages[0]
+        }
         userAge.tintColor = .clear
         agesPickerView.delegate = self
         userAge.inputView = agesPickerView
         
-        userConstitution.text = constitutions[0]
+        if let constitution = UserDefaults.standard.string(forKey: "constitution") {
+            if let index = constitutions.firstIndex(of: constitution) {
+                userConstitution.text = constitutions[index]
+            }
+        } else {
+            userConstitution.text = constitutions[0]
+        }
         userConstitution.tintColor = .clear
         constitutionPickerView.delegate = self
         userConstitution.inputView = constitutionPickerView

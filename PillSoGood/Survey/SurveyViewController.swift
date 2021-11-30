@@ -24,7 +24,7 @@ class SurveyViewController: UIViewController{
         super.viewDidLoad()
 
         let rightBarButtonItem = UIBarButtonItem(title: "제출", style: .done, target: self, action: #selector(submitSurvey))
-        rightBarButtonItem.tintColor = .lightGray
+        rightBarButtonItem.tintColor = .darkGray
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         self.navigationController?.isNavigationBarHidden = false
         surveyTableView.delegate = self

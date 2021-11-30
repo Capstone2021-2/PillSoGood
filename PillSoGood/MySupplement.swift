@@ -12,6 +12,7 @@ struct MySupplement: Codable {
     let name: String
     let brand: String
     let imageUrl: String
+    let tmp_id: String
     var useAlarm: Int
     var alarms: [String]?
     var uuid: [String]?

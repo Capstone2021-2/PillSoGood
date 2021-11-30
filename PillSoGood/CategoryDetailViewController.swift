@@ -10,30 +10,53 @@ import UIKit
 class CategoryDetailViewController: UIViewController {
 
     @IBOutlet weak var supplementTableView: UITableView!
-    @IBOutlet weak var descriptionView: UIView!
-//    {
-//        didSet {
-//            descriptionView.layer.cornerRadius = 10
-//            descriptionView.layer.borderWidth = 1
-//            descriptionView.layer.borderColor = UIColor(red: 131/255, green: 177/255, blue: 248/255, alpha: 1).cgColor
-//        }
-//    }
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var totalSupplementLabel: UILabel!
+    @IBOutlet weak var sortedButton: UIButton!
     
     var pk: Int? = nil
     var name: String? = nil
-    var categoryType: Int? = nil    // 0: 영양소 1: 기능 2: 체질 3: 브랜드
+    var categoryType: Int? = nil    // 0: 영양소 1: 기능 2: 브랜드 3: 체질
     var supplementList = [supplement]()
+    var filteredSupplement = [supplement]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         
         supplementTableView.register(UINib(nibName: "SupplementCell", bundle: nil), forCellReuseIdentifier: "SupplementCell")
         supplementTableView.delegate = self
         supplementTableView.dataSource = self
         
+        setSortedButton()
+        setSearchBar()
         getData()
         setupLabel()
+    }
+    
+    func setSortedButton() {
+        let inOrderOfRating = UIAction(title: "별점순", image: nil, state: .on) { _ in
+            self.supplementList.sort { return $0.avg_rating > $1.avg_rating }
+            self.supplementTableView.reloadData()
+        }
+        let inOrderOfReview = UIAction(title: "리뷰순", image: nil) { _ in
+            self.supplementList.sort { return $0.review_num > $1.review_num }
+            self.supplementTableView.reloadData()
+        }
+        let inOrderOfTakingNum = UIAction(title: "복용순", image: nil) { _ in
+            self.supplementList.sort { return $0.taking_num > $1.taking_num }
+            self.supplementTableView.reloadData()
+        }
+        
+        sortedButton.menu = UIMenu(title: "정렬", image: nil, identifier: nil, options: .displayInline, children: [inOrderOfRating, inOrderOfReview, inOrderOfTakingNum])
+        sortedButton.showsMenuAsPrimaryAction = true
+        sortedButton.changesSelectionAsPrimaryAction = true
+    }
+    
+    func setSearchBar() {
+        searchBar.placeholder = "영양제 이름을 입력하세요."
+        searchBar.delegate = self
     }
     
     func setupLabel() {
@@ -43,9 +66,9 @@ class CategoryDetailViewController: UIViewController {
             str = name! + " 영양소가 포함된 영양제"
         case 1:
             str = name! + " 건강에 도움이 되는 영양제"
-        case 2:
-            str = name! + " 체질인 사람에게 도움이 되는 영양제"
         case 3:
+            str = name! + " 체질인 사람에게 도움이 되는 영양제"
+        case 2:
             str = name! + "의 영양제 제품"
         default:
             return
@@ -58,71 +81,60 @@ class CategoryDetailViewController: UIViewController {
     func getData() {
         let decoder = JSONDecoder()
         if categoryType == 0 {
-            getNutrientSupplement(pk: self.pk!)
-        }
-        else if categoryType == 1 {
-            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_organs_supplements/"+name!
-            getCategoryList(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
-                if let data = try? decoder.decode([supplement].self, from: data!) {
-                    DispatchQueue.main.async {
-                        self.supplementList = data
-                        self.supplementTableView.reloadData()
-                    }
-                }
-            }
-            
-        }
-        else if categoryType == 2 {
-            
-        }
-        else if categoryType == 3 {
-            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/brands/name/"+name!
-            getCategoryList(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
-                if let data = try? decoder.decode([supplement].self, from: data!) {
-                    DispatchQueue.main.async {
-                        self.supplementList = data
-                        self.supplementTableView.reloadData()
-                    }
-                }
-            }
-        }
-    }
-    
-    func getNutrientSupplement(pk: Int) {
-        let decoder = JSONDecoder()
-        getCategoryList(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/nutrient_to_supplement/"+pk.description) { data in
-            if let data = try? decoder.decode([nutrientFacts].self, from: data!) {
-                for supp in data {
-                    self.getCategoryList(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/"+supp.supplement.description) { data2 in
-                        DispatchQueue.main.async {
-                            if let data2 = try? decoder.decode(supplement.self, from: data2!) {
-                                self.supplementList.append(data2)
-                                self.supplementTableView.reloadData()
+            getRequest(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/nutrient_to_supplement/"+pk!.description) { data in
+                if let data = try? decoder.decode([nutrientFacts].self, from: data!) {
+                    for (index, supp) in data.enumerated() {
+                        getRequest(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/"+supp.supplement.description) { data2 in
+                            DispatchQueue.main.async {
+                                if let data2 = try? decoder.decode(supplement.self, from: data2!) {
+                                    self.supplementList.append(data2)
+                                    self.filteredSupplement.append(data2)
+                                    if (index+1) == data.count {
+                                        self.totalSupplementLabel.text = data.count.description
+                                        self.supplementTableView.reloadData()
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
+        else if categoryType == 1 {
+            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_organs_supplements/"+name!
+            getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
+                if let data = try? decoder.decode([supplement].self, from: data!) {
+                    DispatchQueue.main.async {
+                        self.supplementList = data
+                        self.filteredSupplement = data
+                        self.supplementTableView.reloadData()
+                        self.totalSupplementLabel.text = data.count.description
+                    }
+                }
+            }
+            
+        }
+        else if categoryType == 2 {
+            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/brands/name/"+name!
+            getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
+                if let data = try? decoder.decode([supplement].self, from: data!) {
+                    DispatchQueue.main.async {
+                        self.supplementList = data
+                        self.filteredSupplement = data
+                        self.supplementTableView.reloadData()
+                        self.totalSupplementLabel.text = data.count.description
+                    }
+                }
+            }
+        }
+        else if categoryType == 3 {
+            
+        }
     }
     
-    func getCategoryList(url: String, completion: @escaping (Data?) -> Void){
-        guard let url = URL(string: url) else {return}
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print(error)
-                return
-            }
-            guard let data = data else {
-                print("no data")
-                return
-            }
-            completion(data)
-        }.resume()
+    // 화면 터치 시 키보드 내리기
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 
 }
@@ -135,9 +147,26 @@ extension CategoryDetailViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SupplementCell", for: indexPath) as! SupplementCell
         
+        let url = "https://pillsogood.s3.ap-northeast-2.amazonaws.com/" + supplementList[indexPath.row].tmp_id + ".jpg"
+        cell.supplementImageView.image = UIImage(named: "default")
+        if let image = Cache.imageCache.object(forKey: url as NSString) {
+            cell.supplementImageView.image = image
+        } else {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: URL(string: url)!) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            cell.supplementImageView.image = image
+                            Cache.imageCache.setObject(image, forKey: url as NSString)
+                        }
+                    }
+                }
+            }
+        }
         cell.supplementTitle.text = supplementList[indexPath.row].name
         cell.brand.text = supplementList[indexPath.row].company
-        cell.score.text = supplementList[indexPath.row].avg_rating?.description
+        cell.score.text = supplementList[indexPath.row].avg_rating.description + " (" + supplementList[indexPath.row].review_num.description + ")"
+        cell.theNumOfPeople.text = supplementList[indexPath.row].taking_num.description
         
         return cell
     }
@@ -159,7 +188,26 @@ extension CategoryDetailViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 130
     }
     
+}
+
+extension CategoryDetailViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        supplementList = searchText.isEmpty ? filteredSupplement : filteredSupplement.filter({ supplement in
+            return supplement.name.range(of: searchText, options: .caseInsensitive) != nil
+        })
+        totalSupplementLabel.text = supplementList.count.description
+        supplementTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
 }

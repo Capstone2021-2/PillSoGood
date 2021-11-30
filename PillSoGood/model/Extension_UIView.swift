@@ -39,3 +39,21 @@ extension UIView {
     }
     
 }
+
+extension UIImageView {
+    public func imageFromUrl(urlString: String, PlaceHolderImage: UIImage) {
+        if self.image == nil {
+            self.image = PlaceHolderImage
+        }
+        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL) { data, response, error in
+            if error != nil {
+                print(error ?? "No Error")
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data!)
+                self.image = image
+            }
+        }
+    }
+}

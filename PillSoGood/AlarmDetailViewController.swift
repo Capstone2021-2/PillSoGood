@@ -33,6 +33,22 @@ class AlarmDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let url = "https://pillsogood.s3.ap-northeast-2.amazonaws.com/" + supplementInfo.tmp_id + ".jpg"
+        supplementImageView.image = UIImage(named: "default")
+        if let image = Cache.imageCache.object(forKey: url as NSString) {
+            supplementImageView.image = image
+        } else {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: URL(string: url)!) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.supplementImageView.image = image
+                            Cache.imageCache.setObject(image, forKey: url as NSString)
+                        }
+                    }
+                }
+            }
+        }
         self.supplementLabel.text = supplementInfo.name
         self.brandLabel.text = supplementInfo.brand
         alarmSwitch.transform = CGAffineTransform(scaleX: 0.8, y: 0.75)

@@ -60,7 +60,7 @@ class AlarmTapViewController: UIViewController {
                                     }
                                 }
                                 if count == self.mySupplements.count {
-                                    self.mySupplements.append(MySupplement(pk: data2.pk, name: data2.name, brand: data2.company, imageUrl: "", useAlarm: 0, alarms: nil, uuid: nil))
+                                    self.mySupplements.append(MySupplement(pk: data2.pk, name: data2.name, brand: data2.company, imageUrl: "", tmp_id: data2.tmp_id, useAlarm: 0, alarms: nil, uuid: nil))
                                     self.mySupplementTableView.reloadData()
                                 }
                             }
@@ -81,7 +81,7 @@ class AlarmTapViewController: UIViewController {
                     getRequest(url: url2) { data2 in
                         DispatchQueue.main.async {
                             if let data2 = try? decoder.decode(supplement.self, from: data2!) {
-                                self.mySupplements.append(MySupplement(pk: data2.pk, name: data2.name, brand: data2.company, imageUrl: "", useAlarm: 0, alarms: nil, uuid: nil))
+                                self.mySupplements.append(MySupplement(pk: data2.pk, name: data2.name, brand: data2.company, imageUrl: "", tmp_id: data2.tmp_id, useAlarm: 0, alarms: nil, uuid: nil))
                                 self.mySupplementTableView.reloadData()
                             }
                         }
@@ -94,7 +94,27 @@ class AlarmTapViewController: UIViewController {
     
     // 플러스 버튼 클릭 시
     @IBAction func addSupplement(_ sender: Any) {
+        let alert = UIAlertController(title: "추가", message: nil, preferredStyle: .actionSheet)
+        let search = UIAlertAction(title: "영양제 검색", style: .default) { UIAlertAction in
+            if let mainPage = self.storyboard!.instantiateViewController(withIdentifier: "TapBarController") as? UITabBarController {
+                mainPage.modalPresentationStyle = .fullScreen
+                mainPage.selectedIndex = 1
+                self.present(mainPage, animated: false, completion: nil)
+            }
+        }
+        let request = UIAlertAction(title: "영양제 등록 요청", style: .default) { UIAlertAction in
+            if let requestVC = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController {
+                
+                self.present(requestVC, animated: true, completion: nil)
+            }
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
+        alert.addAction(search)
+        alert.addAction(request)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // 화면 클릭 시 탭바 아이템 수정
@@ -142,6 +162,22 @@ extension AlarmTapViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MySupplementCell", for: indexPath) as! MySupplementCell
         let supplement = mySupplements[indexPath.row]
         
+        let url = "https://pillsogood.s3.ap-northeast-2.amazonaws.com/" + mySupplements[indexPath.row].tmp_id + ".jpg"
+        cell.supplementImageView.image = UIImage(named: "default")
+        if let image = Cache.imageCache.object(forKey: url as NSString) {
+            cell.supplementImageView.image = image
+        } else {
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: URL(string: url)!) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            cell.supplementImageView.image = image
+                            Cache.imageCache.setObject(image, forKey: url as NSString)
+                        }
+                    }
+                }
+            }
+        }
         cell.supplementLabel.text = supplement.name
         cell.brandLabel.text = supplement.brand
         if supplement.useAlarm == 1 {

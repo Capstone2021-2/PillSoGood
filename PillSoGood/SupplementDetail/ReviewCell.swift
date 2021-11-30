@@ -11,6 +11,7 @@ class ReviewCell: UICollectionViewCell {
     
     
     @IBOutlet weak var reviewTableView: UITableView!
+    var reviewList = [userReview]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,14 +26,14 @@ class ReviewCell: UICollectionViewCell {
 
 extension ReviewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return reviewList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewFormCell", for: indexPath) as! ReviewFormCell
         cell.isSelected = false
-        cell.userInfo.text = "여성 | 15~29세 | 태음인"
-        cell.review.text = "강추"
+        cell.userInfo.text = reviewList[indexPath.row].gender + "성 | " + reviewList[indexPath.row].age + "세 | " + reviewList[indexPath.row].bodytype
+        cell.review.text = reviewList[indexPath.row].text
         
         return cell
     }

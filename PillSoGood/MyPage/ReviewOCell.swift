@@ -12,7 +12,10 @@ class ReviewOCell: UITableViewCell {
     @IBOutlet weak var supplementImageView: UIImageView!
     @IBOutlet weak var supplementName: UILabel!
     @IBOutlet weak var brand: UILabel!
+    @IBOutlet weak var ratingStackView: UIStackView!
     @IBOutlet weak var review: UILabel!
+    
+    var actionBlock: (() -> Void)? = nil
     
 
     override func awakeFromNib() {
@@ -27,7 +30,7 @@ class ReviewOCell: UITableViewCell {
     }
     
     @IBAction func removeReview(_ sender: Any) {
-        
+        actionBlock?()
     }
     
 }

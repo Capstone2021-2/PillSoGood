@@ -21,6 +21,9 @@ struct Response: Codable {
     let email: String?
     let nickname: String?
     let pk: Int?
+    let gender: String?
+    let age: String?
+    let bodytype: String?
 }
 
 class ViewController: UIViewController {
@@ -102,6 +105,9 @@ class ViewController: UIViewController {
                     UserDefaults.standard.set(result.email, forKey: "email")
                     UserDefaults.standard.set(result.nickname, forKey: "nickname")
                     UserDefaults.standard.set(result.pk, forKey: "pk")
+                    UserDefaults.standard.set(result.gender, forKey: "gender")
+                    UserDefaults.standard.set(result.age, forKey: "age")
+                    UserDefaults.standard.set(result.bodytype, forKey: "constitution")
                 }
             } catch {
                 print("error")

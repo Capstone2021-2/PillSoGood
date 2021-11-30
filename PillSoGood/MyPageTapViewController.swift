@@ -11,6 +11,7 @@ class MyPageTapViewController: UIViewController {
     
     
     @IBOutlet weak var user_nickname: UILabel!
+    @IBOutlet weak var userInfoLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView! {
         didSet {
             profileImage.layer.borderWidth = 1
@@ -37,6 +38,24 @@ class MyPageTapViewController: UIViewController {
         self.navigationController?.tabBarItem.title = "마이페이지"
         self.navigationController?.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         self.navigationController?.isNavigationBarHidden = true
+        
+        var infoStr = "나이 "
+        if let age = UserDefaults.standard.string(forKey: "age") {
+            infoStr += age + "세 | "
+        } else {
+            infoStr += "- | "
+        }
+        if let gender = UserDefaults.standard.string(forKey: "gender") {
+            infoStr += "성별 " + gender + "성 | "
+        } else {
+            infoStr += "성별 - | "
+        }
+        if let constitution = UserDefaults.standard.string(forKey: "constitution") {
+            infoStr += "체질 " + constitution
+        } else {
+            infoStr += "체질 -"
+        }
+        userInfoLabel.text = infoStr
     }
     
     // 화면 내려갈 시 탭바 아이템 수정
@@ -58,6 +77,18 @@ class MyPageTapViewController: UIViewController {
         
     }
     
+    @IBAction func moveToNutAnalysis(_ sender: Any) {
+        if let analysisVC = self.storyboard!.instantiateViewController(withIdentifier: "NutrientAnalysisViewController") as? NutrientAnalysisViewController {
+            analysisVC.title = "영양제 확인"
+            let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+            backBarButtonItem.tintColor = .lightGray
+            self.navigationItem.backBarButtonItem = backBarButtonItem
+
+            self.navigationController?.pushViewController(analysisVC, animated: true)
+        }
+    }
+    
+    
     @IBAction func moveToReview(_ sender: Any) {
         if let detailVC = self.storyboard!.instantiateViewController(identifier: "ReviewPageViewController") as? ReviewPageViewController {
             detailVC.title = "리뷰 관리"
@@ -69,6 +100,11 @@ class MyPageTapViewController: UIViewController {
         }
     }
     
+    @IBAction func moveToSettingAlarm(_ sender: Any) {
+        let alertVC = self.storyboard!.instantiateViewController(withIdentifier: "SettingAlarmViewController") as! SettingAlarmViewController
+        alertVC.modalPresentationStyle = .overCurrentContext
+        self.present(alertVC, animated: true, completion: nil)
+    }
     
     // 로그아웃
     @IBAction func logout(_ sender: Any) {

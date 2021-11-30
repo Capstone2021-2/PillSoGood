@@ -12,31 +12,31 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SupplementCell" rowHeight="127" id="KGk-i7-Jjw" customClass="SupplementCell" customModule="PillSoGood" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="360" height="127"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="360" height="127"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="Dke-ES-AAE">
-                        <rect key="frame" x="20" y="30" width="70" height="70"/>
+                        <rect key="frame" x="20" y="28.5" width="70" height="70"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="IzA-32-jmP"/>
                             <constraint firstAttribute="height" constant="70" id="Nvr-Wk-PPB"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영양제 이름" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBx-3L-yhr">
-                        <rect key="frame" x="105" y="33.5" width="69" height="18"/>
+                        <rect key="frame" x="105" y="28.5" width="69" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영양제 회사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-Sv-OaY">
-                        <rect key="frame" x="105" y="56.5" width="55.5" height="14.5"/>
+                        <rect key="frame" x="105" y="51.5" width="55.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WGP-ph-QJ7">
-                        <rect key="frame" x="105" y="80.5" width="20" height="20"/>
+                        <rect key="frame" x="105" y="75.5" width="20" height="20"/>
                         <color key="tintColor" red="0.9995369315" green="0.95225065949999999" blue="0.57637375589999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="s7W-NF-b4u"/>
@@ -44,13 +44,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="별점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4Z-KV-bj3">
-                        <rect key="frame" x="130" y="83" width="22.5" height="16"/>
+                        <rect key="frame" x="130" y="78" width="22.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pills.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mHz-bP-u3S">
-                        <rect key="frame" x="167.5" y="81" width="20" height="19.5"/>
+                        <rect key="frame" x="167.5" y="76" width="20" height="19.5"/>
                         <color key="tintColor" red="0.99938315150000001" green="0.50410354140000002" blue="0.3057883978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="4C5-LP-mV4"/>
@@ -58,27 +58,27 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQg-Mf-BSe">
-                        <rect key="frame" x="192.5" y="83" width="9" height="16"/>
+                        <rect key="frame" x="192.5" y="78" width="9" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cBx-3L-yhr" secondAttribute="trailing" constant="20" id="2gE-11-2wY"/>
                     <constraint firstItem="sQg-Mf-BSe" firstAttribute="centerY" secondItem="WGP-ph-QJ7" secondAttribute="centerY" id="2qO-Bg-j4b"/>
+                    <constraint firstItem="Z4U-Sv-OaY" firstAttribute="leading" secondItem="cBx-3L-yhr" secondAttribute="leading" id="5Iw-s7-qTJ"/>
                     <constraint firstItem="WGP-ph-QJ7" firstAttribute="top" secondItem="Z4U-Sv-OaY" secondAttribute="bottom" constant="10" id="6M2-6a-ibN"/>
+                    <constraint firstItem="WGP-ph-QJ7" firstAttribute="leading" secondItem="cBx-3L-yhr" secondAttribute="leading" id="6z5-9V-edD"/>
                     <constraint firstItem="Dke-ES-AAE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="9oa-sG-qmw"/>
+                    <constraint firstItem="Dke-ES-AAE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ac0-4T-G2y"/>
                     <constraint firstItem="p4Z-KV-bj3" firstAttribute="leading" secondItem="WGP-ph-QJ7" secondAttribute="trailing" constant="5" id="BvT-Fr-1AU"/>
                     <constraint firstItem="mHz-bP-u3S" firstAttribute="centerY" secondItem="WGP-ph-QJ7" secondAttribute="centerY" id="DP0-1E-srP"/>
-                    <constraint firstItem="WGP-ph-QJ7" firstAttribute="leading" secondItem="Dke-ES-AAE" secondAttribute="trailing" constant="15" id="Hc8-Z8-5wx"/>
-                    <constraint firstItem="cBx-3L-yhr" firstAttribute="centerY" secondItem="Dke-ES-AAE" secondAttribute="centerY" multiplier="0.65" id="Hq0-Rw-lQk"/>
-                    <constraint firstItem="Dke-ES-AAE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="Msn-NJ-LzL"/>
+                    <constraint firstItem="cBx-3L-yhr" firstAttribute="top" secondItem="Dke-ES-AAE" secondAttribute="top" id="FMi-hJ-Q7y"/>
                     <constraint firstItem="p4Z-KV-bj3" firstAttribute="centerY" secondItem="WGP-ph-QJ7" secondAttribute="centerY" id="cKO-0Z-1Qe"/>
-                    <constraint firstItem="Dke-ES-AAE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hSn-vL-hWG"/>
                     <constraint firstItem="mHz-bP-u3S" firstAttribute="leading" secondItem="p4Z-KV-bj3" secondAttribute="trailing" constant="15" id="heg-FD-98c"/>
                     <constraint firstItem="cBx-3L-yhr" firstAttribute="leading" secondItem="Dke-ES-AAE" secondAttribute="trailing" constant="15" id="k69-Wb-yMu"/>
                     <constraint firstItem="Z4U-Sv-OaY" firstAttribute="top" secondItem="cBx-3L-yhr" secondAttribute="bottom" constant="5" id="mC2-iF-k6r"/>
-                    <constraint firstItem="Z4U-Sv-OaY" firstAttribute="leading" secondItem="Dke-ES-AAE" secondAttribute="trailing" constant="15" id="qgG-st-wZh"/>
                     <constraint firstItem="sQg-Mf-BSe" firstAttribute="leading" secondItem="mHz-bP-u3S" secondAttribute="trailing" constant="5" id="zTb-Ha-jiw"/>
                 </constraints>
             </tableViewCellContentView>

@@ -17,11 +17,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="387" height="407"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ls1-of-FHS">
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ls1-of-FHS">
                         <rect key="frame" x="0.0" y="0.0" width="387" height="407"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZP-Xm-Vuc">
-                                <rect key="frame" x="0.0" y="0.0" width="387" height="49.5"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NZP-Xm-Vuc">
+                                <rect key="frame" x="0.0" y="0.0" width="387" height="97"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영양소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ed-JP-5VR">
                                         <rect key="frame" x="40" y="15" width="31.5" height="14.5"/>
@@ -48,7 +48,6 @@
                                     <constraint firstItem="gqe-aa-1VP" firstAttribute="top" secondItem="NZP-Xm-Vuc" secondAttribute="top" constant="15" id="7L1-oc-gFq"/>
                                     <constraint firstItem="gqe-aa-1VP" firstAttribute="leading" secondItem="fd2-7m-Gah" secondAttribute="trailing" constant="15" id="E6o-BO-qPx"/>
                                     <constraint firstItem="fd2-7m-Gah" firstAttribute="top" secondItem="NZP-Xm-Vuc" secondAttribute="top" constant="15" id="eIG-zc-YTO"/>
-                                    <constraint firstAttribute="bottom" secondItem="9Ed-JP-5VR" secondAttribute="bottom" constant="20" id="h1D-IS-n4S"/>
                                     <constraint firstItem="9Ed-JP-5VR" firstAttribute="top" secondItem="NZP-Xm-Vuc" secondAttribute="top" constant="15" id="mJ9-7f-Gco"/>
                                     <constraint firstAttribute="trailing" secondItem="gqe-aa-1VP" secondAttribute="trailing" constant="15" id="wue-Ak-fz2"/>
                                 </constraints>
@@ -78,6 +77,7 @@
             <connections>
                 <outlet property="amountLabel" destination="fd2-7m-Gah" id="RFK-h4-eRp"/>
                 <outlet property="nutrientLabel" destination="9Ed-JP-5VR" id="rdo-fG-i9v"/>
+                <outlet property="nutrientView" destination="NZP-Xm-Vuc" id="d4j-48-UgC"/>
                 <outlet property="percentLabel" destination="gqe-aa-1VP" id="UaW-xc-jF3"/>
             </connections>
             <point key="canvasLocation" x="205.07246376811597" y="173.77232142857142"/>

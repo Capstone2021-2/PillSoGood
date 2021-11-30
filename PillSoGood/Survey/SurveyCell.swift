@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreAudio
 
 protocol CellDelegate: class {
     func CellButtonTapped(key: Int, value: Int)
@@ -24,25 +25,37 @@ class SurveyCell: UITableViewCell{
     @IBAction func touchButton(_ sender: UIButton) {
         if indexOfOneAndOnly != nil {
             if !sender.isSelected {
-                resetButton()
+                deselectButton()
+                sender.tintColor = UIColor(red: 118/255, green: 178/255, blue: 254/255, alpha: 1)
                 sender.isSelected = true
                 indexOfOneAndOnly = radioButtons.firstIndex(of: sender)
                 delegate?.CellButtonTapped(key: indexPathRow, value: indexOfOneAndOnly!)
             } else {
                 sender.isSelected = false
+                resetButton()
                 indexOfOneAndOnly = nil
                 delegate?.CellButtonTapped(key: indexPathRow, value: -1)
             }
         } else {
+            deselectButton()
+            sender.tintColor = UIColor(red: 118/255, green: 178/255, blue: 254/255, alpha: 1)
             sender.isSelected = true
             indexOfOneAndOnly = radioButtons.firstIndex(of: sender)
             delegate?.CellButtonTapped(key: indexPathRow, value: indexOfOneAndOnly!)
         }
     }
     
+    func deselectButton() {
+        for index in radioButtons.indices {
+            radioButtons[index].isSelected = false
+            radioButtons[index].tintColor = .lightGray
+        }
+    }
+    
     func resetButton() {
         for index in radioButtons.indices {
             radioButtons[index].isSelected = false
+            radioButtons[index].tintColor = UIColor(red: 118/255, green: 178/255, blue: 254/255, alpha: 1)
         }
     }
     

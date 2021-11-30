@@ -7,6 +7,8 @@
 
 import UIKit
 
+let constitution = ["열태양", "한태양", "열태음", "한태음", "열소양", "한소양", "열소음", "한소음"]
+
 class CategoryItemCell: UITableViewCell {
     
     @IBOutlet weak var itemView: UIView! {
@@ -26,14 +28,17 @@ class CategoryItemCell: UITableViewCell {
 class CategoryViewController: UIViewController {
     
     @IBOutlet weak var categoryTableView: UITableView!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var itemList: [Any]? = nil
+    var filteredList: [Any]? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
         categoryTableView.dataSource = self
         categoryTableView.delegate = self
-        
+        searchBar.delegate = self
     }
     
     func getData() {
@@ -46,6 +51,8 @@ class CategoryViewController: UIViewController {
                 if let data = try? decoder.decode([nutrient].self, from: data!) {
                     DispatchQueue.main.async {
                         self.itemList = data
+                        self.filteredList = data
+                        self.setTotalLabel()
                         self.categoryTableView.reloadData()
                     }
                 }
@@ -56,6 +63,8 @@ class CategoryViewController: UIViewController {
                 if let data = try? decoder.decode([organ].self, from: data!) {
                     DispatchQueue.main.async {
                         self.itemList = data
+                        self.filteredList = data
+                        self.setTotalLabel()
                         self.categoryTableView.reloadData()
                     }
                 }
@@ -65,10 +74,17 @@ class CategoryViewController: UIViewController {
                 if let data = try? decoder.decode([brand].self, from: data!) {
                     DispatchQueue.main.async {
                         self.itemList = data
+                        self.filteredList = data
+                        self.setTotalLabel()
                         self.categoryTableView.reloadData()
                     }
                 }
             }
+        } else if title.contains("체질") {
+            self.itemList = constitution
+            self.filteredList = constitution
+            self.setTotalLabel()
+            self.categoryTableView.reloadData()
         }
     }
     
@@ -84,6 +100,14 @@ class CategoryViewController: UIViewController {
             }
             completion(data)
         }.resume()
+    }
+    
+    func setTotalLabel() {
+        let totLabel = "전체 " + (itemList?.count.description ?? "0") + "개"
+        let fontSize = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        let attributedStr = NSMutableAttributedString(string: totLabel)
+        attributedStr.addAttribute(.font, value: fontSize, range: (totLabel as NSString).range(of: itemList?.count.description ?? "0"))
+        self.totalLabel.attributedText = attributedStr
     }
 
 }
@@ -115,6 +139,11 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
                 let name = (itemList?[indexPath.row] as! brand).name
                 categoryVC.title = name
                 categoryVC.name = name
+                categoryVC.categoryType = 2
+            } else if itemList?[indexPath.row] is String {
+                let name = (itemList?[indexPath.row] as! String)
+                categoryVC.title = name
+                categoryVC.name = name
                 categoryVC.categoryType = 3
             }
 
@@ -131,6 +160,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             cell.itemLabel.text = (itemList?[indexPath.row] as! organ).organ
         } else if itemList?[indexPath.row] is brand {
             cell.itemLabel.text = (itemList?[indexPath.row] as! brand).name
+        } else if itemList?[indexPath.row] is String {
+            cell.itemLabel.text = (itemList?[indexPath.row] as! String)
         }
         
         return cell
@@ -141,4 +172,35 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension CategoryViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if title!.contains("영양소") {
+            itemList = searchText.isEmpty ? filteredList : (filteredList! as! [nutrient]).filter({ nutrient in
+                return nutrient.name.range(of: searchText, options: .caseInsensitive) != nil
+            })
+        } else if title!.contains("기능") {
+            itemList = searchText.isEmpty ? filteredList : (filteredList! as! [organ]).filter({ organ in
+                return organ.organ.range(of: searchText, options: .caseInsensitive) != nil
+            })
+        } else if title!.contains("브랜드") {
+            itemList = searchText.isEmpty ? filteredList : (filteredList! as! [brand]).filter({ brand in
+                return brand.name.range(of: searchText, options: .caseInsensitive) != nil
+            })
+        } else {
+            
+        }
+        setTotalLabel()
+        categoryTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.text = ""
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
 }

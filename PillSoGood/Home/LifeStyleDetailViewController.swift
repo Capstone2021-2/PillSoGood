@@ -95,7 +95,7 @@ extension LifeStyleDetailViewController: UITableViewDelegate, UITableViewDataSou
         
         cell.supplementTitle.text = supplementList[indexPath.row].name
         cell.brand.text = supplementList[indexPath.row].company
-        cell.score.text = supplementList[indexPath.row].avg_rating?.description
+        cell.score.text = supplementList[indexPath.row].avg_rating.description
         
         return cell
     }
