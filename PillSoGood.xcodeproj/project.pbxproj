@@ -20,6 +20,8 @@
 		CD29612D2727E67100D0D06A /* EditMyInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD29612C2727E67100D0D06A /* EditMyInformation.swift */; };
 		CD2961302727F35E00D0D06A /* ReviewFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD29612E2727F35E00D0D06A /* ReviewFormCell.swift */; };
 		CD2961312727F35E00D0D06A /* ReviewFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD29612F2727F35E00D0D06A /* ReviewFormCell.xib */; };
+		CD37C9FC2758AC0000E221FE /* ReviewForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD37C9FA2758AC0000E221FE /* ReviewForm.swift */; };
+		CD37C9FD2758AC0000E221FE /* ReviewForm.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD37C9FB2758AC0000E221FE /* ReviewForm.xib */; };
 		CD4942E7273BCD640028307D /* LifeStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4942E6273BCD640028307D /* LifeStyleViewController.swift */; };
 		CD4942E9273BD50A0028307D /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4942E8273BD50A0028307D /* ApiRequest.swift */; };
 		CD4942EB273BF28D0028307D /* LifeStyleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4942EA273BF28D0028307D /* LifeStyleDetailViewController.swift */; };
@@ -41,6 +43,7 @@
 		CD6812842702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */; };
 		CD6AB7352756363300E1B9BB /* SettingAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6AB7342756363300E1B9BB /* SettingAlarmViewController.swift */; };
 		CD7502C1273BA810009FF65B /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7502C0273BA810009FF65B /* WriteReviewViewController.swift */; };
+		CD7B02642758FB6B0076AB8E /* PrecautionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7B02632758FB6B0076AB8E /* PrecautionViewController.swift */; };
 		CD8A36F12756C18100B030DF /* SuveyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A36F02756C18100B030DF /* SuveyCollectionViewCell.swift */; };
 		CD8A36F32756C19500B030DF /* LifeStyleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8A36F22756C19500B030DF /* LifeStyleCollectionViewCell.swift */; };
 		CD98E55C274FF42200ED8A06 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD98E55B274FF42200ED8A06 /* RequestViewController.swift */; };
@@ -104,6 +107,8 @@
 		CD29612C2727E67100D0D06A /* EditMyInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyInformation.swift; sourceTree = "<group>"; };
 		CD29612E2727F35E00D0D06A /* ReviewFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFormCell.swift; sourceTree = "<group>"; };
 		CD29612F2727F35E00D0D06A /* ReviewFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewFormCell.xib; sourceTree = "<group>"; };
+		CD37C9FA2758AC0000E221FE /* ReviewForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewForm.swift; sourceTree = "<group>"; };
+		CD37C9FB2758AC0000E221FE /* ReviewForm.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewForm.xib; sourceTree = "<group>"; };
 		CD4942E6273BCD640028307D /* LifeStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStyleViewController.swift; sourceTree = "<group>"; };
 		CD4942E8273BD50A0028307D /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		CD4942EA273BF28D0028307D /* LifeStyleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStyleDetailViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +134,7 @@
 		CD6812832702E29A00F6D2C4 /* PillSoGoodUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillSoGoodUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CD6AB7342756363300E1B9BB /* SettingAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAlarmViewController.swift; sourceTree = "<group>"; };
 		CD7502C0273BA810009FF65B /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
+		CD7B02632758FB6B0076AB8E /* PrecautionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecautionViewController.swift; sourceTree = "<group>"; };
 		CD8A36F02756C18100B030DF /* SuveyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuveyCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD8A36F22756C19500B030DF /* LifeStyleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeStyleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD98E55B274FF42200ED8A06 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +203,7 @@
 				CD7502C0273BA810009FF65B /* WriteReviewViewController.swift */,
 				CDA4639B27467B9E00C88B7A /* NutrientAnalysisViewController.swift */,
 				CD6AB7342756363300E1B9BB /* SettingAlarmViewController.swift */,
+				CD7B02632758FB6B0076AB8E /* PrecautionViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -312,6 +319,8 @@
 				CD27D2FF27266C6000476D3B /* ReviewCell.xib */,
 				CD29612E2727F35E00D0D06A /* ReviewFormCell.swift */,
 				CD29612F2727F35E00D0D06A /* ReviewFormCell.xib */,
+				CD37C9FA2758AC0000E221FE /* ReviewForm.swift */,
+				CD37C9FB2758AC0000E221FE /* ReviewForm.xib */,
 			);
 			path = SupplementDetail;
 			sourceTree = "<group>";
@@ -455,6 +464,7 @@
 				CD68126A2702E29A00F6D2C4 /* Assets.xcassets in Resources */,
 				CD27D2F32726587500476D3B /* MenuBarCell.xib in Resources */,
 				CDAAE5EA273B7DDF003EEC2D /* ReviewXCell.xib in Resources */,
+				CD37C9FD2758AC0000E221FE /* ReviewForm.xib in Resources */,
 				CD576CE3270C585A009DB579 /* MainPage.storyboard in Resources */,
 				CDAAE5EE273B805F003EEC2D /* ReviewOCell.xib in Resources */,
 				CD27D2FD27266C4F00476D3B /* InformationCell.xib in Resources */,
@@ -501,6 +511,7 @@
 				CD4942E7273BCD640028307D /* LifeStyleViewController.swift in Sources */,
 				CDFE1706270997B300BB15C2 /* SignUpViewController.swift in Sources */,
 				CDAAE5E2273B7BA0003EEC2D /* ReviewPageViewController.swift in Sources */,
+				CD7B02642758FB6B0076AB8E /* PrecautionViewController.swift in Sources */,
 				CDDA4734270A571F00549441 /* FindInfoViewController.swift in Sources */,
 				CDAC52B2272562EF009D3156 /* MenuBar.swift in Sources */,
 				CDA0DC5A2703906C009BBFFF /* MainPage.swift in Sources */,
@@ -530,6 +541,7 @@
 				CD6812682702E29900F6D2C4 /* PillSoGood.xcdatamodeld in Sources */,
 				CD27D2F22726587500476D3B /* MenuBarCell.swift in Sources */,
 				CD576CE9270C5E78009DB579 /* MyPageTapViewController.swift in Sources */,
+				CD37C9FC2758AC0000E221FE /* ReviewForm.swift in Sources */,
 				CD576CE7270C5E43009DB579 /* AlarmTapViewController.swift in Sources */,
 				CD6AB7352756363300E1B9BB /* SettingAlarmViewController.swift in Sources */,
 				CD27D2F827266C3E00476D3B /* NutrientsCell.swift in Sources */,

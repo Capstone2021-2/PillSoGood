@@ -105,9 +105,9 @@ class ViewController: UIViewController {
                     UserDefaults.standard.set(result.email, forKey: "email")
                     UserDefaults.standard.set(result.nickname, forKey: "nickname")
                     UserDefaults.standard.set(result.pk, forKey: "pk")
-                    UserDefaults.standard.set(result.gender, forKey: "gender")
-                    UserDefaults.standard.set(result.age, forKey: "age")
-                    UserDefaults.standard.set(result.bodytype, forKey: "constitution")
+                    UserDefaults.standard.set((result.gender ?? "남"), forKey: "gender")
+                    UserDefaults.standard.set((result.age ?? "19~29"), forKey: "age")
+                    UserDefaults.standard.set((result.bodytype ?? "한태양"), forKey: "constitution")
                 }
             } catch {
                 print("error")

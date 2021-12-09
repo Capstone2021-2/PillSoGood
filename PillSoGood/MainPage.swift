@@ -26,10 +26,15 @@ class MainPage: UIViewController {
     @IBOutlet weak var supplementAvgRating: UILabel!
     @IBOutlet weak var supplementTakingNum: UILabel!
     @IBOutlet weak var nutrientsStackView: UIStackView!
+    @IBOutlet weak var ageAndGenderLabel: UILabel!
+    @IBOutlet weak var ageAndGenderStackView: UIStackView!
+    @IBOutlet weak var constitutionLabel: UILabel!
+    @IBOutlet weak var constitutionStackView: UIStackView!
     @IBOutlet weak var supplementView: UIView!
     var alotOfViewsInSupplements: supplementForViews?
     var nutrientsList = [Int : nutrientForViews]()
     var nowPage: Int = 0
+    let decoder = JSONDecoder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +42,8 @@ class MainPage: UIViewController {
         bannerCollectionView.delegate = self
         bannerCollectionView.dataSource = self
         getALotOfViews()
+        goodForAgeAndGender()
+        goodForConstitution()
         supplementView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveToDetailView)))
         bannerTimer()
     }
@@ -72,23 +79,22 @@ class MainPage: UIViewController {
     }
     
     func getALotOfViews() {
-        let decoder = JSONDecoder()
-        let nutUrl = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrients/top_search"
+        let nutUrl = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrients_top_search"
         let suppUrl = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/top_search"
         getRequest(url: nutUrl) { data in
-            if let data = try? decoder.decode([nutrientForViews].self, from: data!) {
+            if let data = try? self.decoder.decode([nutrientForViews].self, from: data!) {
                 DispatchQueue.main.async {
                     for (index, item) in data.enumerated() {
                         if let nameButton = self.nutrientsStackView.viewWithTag(index+1) as? UIButton {
                             self.nutrientsList[index+1] = item
-                            nameButton.setTitle(item.name, for: .normal)
+                            nameButton.setTitle(item.nutrient, for: .normal)
                         }
                     }
                 }
             }
         }
         getRequest(url: suppUrl) { data in
-            if let data = try? decoder.decode(supplementForViews.self, from: data!) {
+            if let data = try? self.decoder.decode(supplementForViews.self, from: data!) {
                 self.alotOfViewsInSupplements = data
                 DispatchQueue.main.async {
                     let url = "https://pillsogood.s3.ap-northeast-2.amazonaws.com/" + data.tmp_id + ".jpg"
@@ -115,6 +121,43 @@ class MainPage: UIViewController {
             }
         }
     }
+    
+    func goodForAgeAndGender() {
+        let age = UserDefaults.standard.string(forKey: "age") ?? "19~29"
+        let gender = UserDefaults.standard.string(forKey: "gender") ?? "남"
+        ageAndGenderLabel.text = age + "대 " + gender + "성에게 추천하는 영양소"
+        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_ages/" + age + "/" + gender
+        getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
+            if let data = try? self.decoder.decode([nutrientForViews].self, from: data!) {
+                DispatchQueue.main.async {
+                    for (index, item) in data.enumerated() {
+                        if let nameButton = self.ageAndGenderStackView.viewWithTag(index+5) as? UIButton {
+                            self.nutrientsList[index+5] = item
+                            nameButton.setTitle(item.nutrient, for: .normal)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func goodForConstitution() {
+        let constitution = UserDefaults.standard.string(forKey: "constitution") ?? "열태양"
+        constitutionLabel.text = constitution + "에게 추천하는 영양소"
+        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_body_types/" + constitution
+        getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
+            if let data = try? self.decoder.decode([nutrientForViews].self, from: data!) {
+                DispatchQueue.main.async {
+                    for (index, item) in data.enumerated() {
+                        if let nameButton = self.constitutionStackView.viewWithTag(index+9) as? UIButton {
+                            self.nutrientsList[index+9] = item
+                            nameButton.setTitle(item.nutrient, for: .normal)
+                        }
+                    }
+                }
+            }
+        }
+    }
                                                                    
     @objc func moveToDetailView() {
         getSupplementRequest(pk: alotOfViewsInSupplements!.pk) { supplement in
@@ -137,9 +180,9 @@ class MainPage: UIViewController {
             let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
             backBarButtonItem.tintColor = .gray
             self.navigationItem.backBarButtonItem = backBarButtonItem
-            detailVC.pk = nutrientsList[index]?.pk
-            detailVC.title = nutrientsList[index]?.name
-            detailVC.name = nutrientsList[index]?.name
+            detailVC.pk = nutrientsList[index]?.nutrient_pk
+            detailVC.title = nutrientsList[index]?.nutrient
+            detailVC.name = nutrientsList[index]?.nutrient
             detailVC.categoryType = 0
             self.navigationController?.pushViewController(detailVC, animated: true)
         }

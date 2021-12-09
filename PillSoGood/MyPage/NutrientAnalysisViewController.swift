@@ -41,6 +41,9 @@ class NutrientAnalysisViewController: UIViewController {
     var myNutrientInfo = [Int: nutrientInfo]()
     var nameLabelList = [UILabel]()
     
+    var precautionNut = ["인삼", "프로바이오틱스", "알로에", "EPA와 DHA의 합", "밀크씨슬", "감마리놀렌산", "당귀", "돌외잎", "대두", "카르니틴", "녹차", "키토산", "스피루리나", "석류", "공액리놀레산", "클로렐라", "글루코사인", "가시오가피", "코엔자임", "은행", "쏘팔메토", "크랜베리", "포스파티딜레린"]
+    var precuationButton: [UIButton]?
+    
     let decoder = JSONDecoder()
     
     override func viewDidLoad() {
@@ -51,46 +54,80 @@ class NutrientAnalysisViewController: UIViewController {
         supplementTableView.dataSource = self
         supplementTableView.rowHeight = 50
         
-        getData()
-    }
-    
-//    func getAsyncData() async throws -> Void {
-//        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/user/" + UserDefaults.standard.string(forKey: "pk")!
-//        let (data, response) = try await URLSession.shared.dataTask(with: URL(string: url))
-//
-//    }
-    
-    func getData() {
-        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/user/" + UserDefaults.standard.string(forKey: "pk")!
-        getRequest(url: url) { data in
-            if let data = try? self.decoder.decode([takingSupp].self, from: data!) {
-                self.mySupplementInfo = data
-                DispatchQueue.main.async {
-                    self.supplementTableView.reloadData()
-                    self.suppTotalLabel.text = "총 " + data.count.description + "개"
-                }
-                for (index, item) in data.enumerated() {
-                    let url2 = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/supplement_to_nutrient/" + item.supplement_pk.description
-                    getRequest(url: url2) { data2 in
-                        if let data2 = try? self.decoder.decode([nutrientInfo].self, from: data2!) {
-                            DispatchQueue.main.async {
-                                for (index2, item2) in data2.enumerated() {
-                                    if var temp = self.myNutrientInfo[item2.nutrient] {
-                                        temp.amount += item2.amount
-                                        continue
-                                    }
-                                    self.myNutrientInfo[item2.nutrient] = item2
-                                    if (index+1) == data.count && (index2+1) == data2.count {
-                                        self.setNutrientInfo()
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        Task {
+            await getAsyncData()
+            self.setNutrientInfo()
         }
     }
+    
+    func getAsyncData() async {
+        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/user/" + UserDefaults.standard.string(forKey: "pk")!
+        try? await getAsyncSupplement(url: url)
+        DispatchQueue.main.async {
+            self.supplementTableView.reloadData()
+            self.suppTotalLabel.text = "총 " + self.mySupplementInfo.count.description + "개"
+        }
+        
+        for (_, item) in self.mySupplementInfo.enumerated() {
+            let url2 = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/supplement_to_nutrient/" + item.supplement_pk.description
+            try? await getAsyncURL(url: url2)
+        }
+    }
+    
+    func getAsyncSupplement(url: String) async throws {
+        let (data, _) = try await URLSession.shared.data(from: URL(string: url)!, delegate: .none)
+        if let data = try? self.decoder.decode([takingSupp].self, from: data) {
+            self.mySupplementInfo = data
+        }
+    }
+    
+    func getAsyncURL(url: String) async throws {
+        let (data, _) = try await URLSession.shared.data(from: URL(string: url)!, delegate: .none)
+        
+        if let data2 = try? self.decoder.decode([nutrientInfo].self, from: data) {
+            for(_, item) in data2.enumerated() {
+                if var temp = self.myNutrientInfo[item.nutrient] {
+                    temp.amount += item.amount
+                    continue
+                }
+                self.myNutrientInfo[item.nutrient] = item
+            }
+        }
+        
+    }
+    
+//    func getData() {
+//        let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/taking_supplements/user/" + UserDefaults.standard.string(forKey: "pk")!
+//        getRequest(url: url) { data in
+//            if let data = try? self.decoder.decode([takingSupp].self, from: data!) {
+//                self.mySupplementInfo = data
+//                DispatchQueue.main.async {
+//                    self.supplementTableView.reloadData()
+//                    self.suppTotalLabel.text = "총 " + data.count.description + "개"
+//                }
+//                for (index, item) in data.enumerated() {
+//                    let url2 = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/supplement_to_nutrient/" + item.supplement_pk.description
+//                    getRequest(url: url2) { data2 in
+//                        if let data2 = try? self.decoder.decode([nutrientInfo].self, from: data2!) {
+//                            DispatchQueue.main.async {
+//                                for (index2, item2) in data2.enumerated() {
+//                                    if var temp = self.myNutrientInfo[item2.nutrient] {
+//                                        temp.amount += item2.amount
+//                                        continue
+//                                    }
+//                                    self.myNutrientInfo[item2.nutrient] = item2
+//                                    if (index+1) == data.count && (index2+1) == data2.count {
+//                                        print(index, index2)
+//                                        self.setNutrientInfo()
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func setNutrientInfo() {
         for (index, item) in myNutrientInfo.values.enumerated() {
@@ -158,8 +195,56 @@ class NutrientAnalysisViewController: UIViewController {
             }
             nameLabelList.append(nameLabel)
         }
+        setPrecautions()
     }
     
+    func setPrecautions() {
+        let precautionLabel = UILabel()
+        precautionLabel.textColor = UIColor(red: 255/255, green: 98/255, blue: 98/255, alpha: 1)
+        precautionLabel.font = .systemFont(ofSize: 20, weight: .bold)
+        precautionLabel.text = "의약품과 병용섭취 시 주의사항"
+        self.view.addSubview(precautionLabel)
+        precautionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        precautionLabel.topAnchor.constraint(equalTo: (nameLabelList.last?.bottomAnchor ?? nutLabel.bottomAnchor), constant: 30).isActive = true
+        precautionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        
+        for (_, item) in myNutrientInfo.enumerated() {
+            for nut in precautionNut {
+                if item.value.nutrient_name.contains(nut) {
+                    let preView = UIButton()
+                    preView.setTitle(item.value.nutrient_name, for: .normal)
+                    preView.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+                    preView.backgroundColor = UIColor(red: 1, green: 98/255, blue: 86/255, alpha: 0.3)
+                    preView.cornerRadius = 10
+                    preView.setTitleColor(UIColor(red: 184/255, green: 70/255, blue: 63/255, alpha: 1), for: .normal)
+                    self.view.addSubview(preView)
+                    preView.translatesAutoresizingMaskIntoConstraints = false
+
+                    if precuationButton?.last == nil {
+                        precuationButton = [UIButton]()
+                        preView.topAnchor.constraint(equalTo: precautionLabel.bottomAnchor, constant: 20).isActive = true
+                    } else {
+                        preView.topAnchor.constraint(equalTo: precuationButton!.last!.bottomAnchor, constant: 10).isActive = true
+                    }
+                    preView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40).isActive = true
+                    preView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+
+                    preView.addTarget(self, action: #selector(nutrientPrecaution), for: .touchUpInside)
+                    precuationButton?.append(preView)
+                    break
+                }
+            }
+        }
+        
+    }
+    
+    @objc func nutrientPrecaution(_ sender : UIButton) {
+        let alertVC = self.storyboard!.instantiateViewController(withIdentifier: "PrecautionViewController") as! PrecautionViewController
+        alertVC.modalPresentationStyle = .overCurrentContext
+        alertVC.Nutname = sender.currentTitle
+        self.present(alertVC, animated: true, completion: nil)
+    }
 
 }
 

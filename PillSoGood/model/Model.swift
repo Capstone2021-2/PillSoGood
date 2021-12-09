@@ -123,6 +123,11 @@ struct supplementForViews: Codable {
 }
 
 struct nutrientForViews: Codable {
-    let pk: Int
+    let nutrient_pk: Int
+    let nutrient: String
+}
+
+struct caution: Codable {
     let name: String
+    let caution: String
 }

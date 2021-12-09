@@ -31,7 +31,11 @@ class CategoryDetailViewController: UIViewController {
         
         setSortedButton()
         setSearchBar()
-        getData()
+        Task {
+            try? await getData()
+            self.supplementTableView.reloadData()
+            self.totalSupplementLabel.text = self.supplementList.count.description
+        }
         setupLabel()
     }
     
@@ -78,57 +82,66 @@ class CategoryDetailViewController: UIViewController {
         self.descriptionLabel.attributedText = attributedStr
     }
     
-    func getData() {
+    func getData() async throws {
         let decoder = JSONDecoder()
         if categoryType == 0 {
-            getRequest(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/nutrient_to_supplement/"+pk!.description) { data in
-                if let data = try? decoder.decode([nutrientFacts].self, from: data!) {
-                    for (index, supp) in data.enumerated() {
-                        getRequest(url: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/"+supp.supplement.description) { data2 in
-                            DispatchQueue.main.async {
-                                if let data2 = try? decoder.decode(supplement.self, from: data2!) {
-                                    self.supplementList.append(data2)
-                                    self.filteredSupplement.append(data2)
-                                    if (index+1) == data.count {
-                                        self.totalSupplementLabel.text = data.count.description
-                                        self.supplementTableView.reloadData()
-                                    }
-                                }
-                            }
-                        }
+            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/nutrition_facts/nutrient_to_supplement/"+pk!.description
+            let (data, _) = try await URLSession.shared.data(from: URL(string: url)!, delegate: .none)
+            if let data = try? decoder.decode([nutrientFacts].self, from: data) {
+                for supp in data {
+                    let url2 = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/supplements/"+supp.supplement.description
+                    let (data2, _) = try await URLSession.shared.data(from: URL(string: url2)!, delegate: .none)
+                    if let data2 = try? decoder.decode(supplement.self, from: data2) {
+                        self.supplementList.append(data2)
+                        self.filteredSupplement.append(data2)
                     }
                 }
             }
         }
         else if categoryType == 1 {
             let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_organs_supplements/"+name!
-            getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
-                if let data = try? decoder.decode([supplement].self, from: data!) {
-                    DispatchQueue.main.async {
-                        self.supplementList = data
-                        self.filteredSupplement = data
-                        self.supplementTableView.reloadData()
-                        self.totalSupplementLabel.text = data.count.description
-                    }
-                }
+            let (data, _) = try await URLSession.shared.data(from: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, delegate: .none)
+            if let data = try? decoder.decode([supplement].self, from: data) {
+                self.supplementList = data
+                self.filteredSupplement = data
             }
+//            getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
+//                if let data = try? decoder.decode([supplement].self, from: data!) {
+//                    DispatchQueue.main.async {
+//                        self.supplementList = data
+//                        self.filteredSupplement = data
+//                        self.supplementTableView.reloadData()
+//                        self.totalSupplementLabel.text = data.count.description
+//                    }
+//                }
+//            }
             
         }
         else if categoryType == 2 {
             let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/brands/name/"+name!
-            getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
-                if let data = try? decoder.decode([supplement].self, from: data!) {
-                    DispatchQueue.main.async {
-                        self.supplementList = data
-                        self.filteredSupplement = data
-                        self.supplementTableView.reloadData()
-                        self.totalSupplementLabel.text = data.count.description
-                    }
-                }
+            let (data, _) = try await URLSession.shared.data(from: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, delegate: .none)
+            if let data = try? decoder.decode([supplement].self, from: data) {
+                self.supplementList = data
+                self.filteredSupplement = data
             }
+//            getRequest(url: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) { data in
+//                if let data = try? decoder.decode([supplement].self, from: data!) {
+//                    DispatchQueue.main.async {
+//                        self.supplementList = data
+//                        self.filteredSupplement = data
+//                        self.supplementTableView.reloadData()
+//                        self.totalSupplementLabel.text = data.count.description
+//                    }
+//                }
+//            }
         }
         else if categoryType == 3 {
-            
+            let url = "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/good_for_body_types_supplements/" + name!
+            let (data, _) = try await URLSession.shared.data(from: URL(string: url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)!, delegate: .none)
+            if let data = try? decoder.decode([supplement].self, from: data) {
+                self.supplementList = data
+                self.filteredSupplement = data
+            }
         }
     }
     

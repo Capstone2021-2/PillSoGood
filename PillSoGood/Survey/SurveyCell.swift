@@ -26,7 +26,7 @@ class SurveyCell: UITableViewCell{
         if indexOfOneAndOnly != nil {
             if !sender.isSelected {
                 deselectButton()
-                sender.tintColor = UIColor(red: 118/255, green: 178/255, blue: 254/255, alpha: 1)
+                sender.tintColor = UIColor(red: 86/255, green: 131/255, blue: 190/255, alpha: 1)
                 sender.isSelected = true
                 indexOfOneAndOnly = radioButtons.firstIndex(of: sender)
                 delegate?.CellButtonTapped(key: indexPathRow, value: indexOfOneAndOnly!)
@@ -38,7 +38,7 @@ class SurveyCell: UITableViewCell{
             }
         } else {
             deselectButton()
-            sender.tintColor = UIColor(red: 118/255, green: 178/255, blue: 254/255, alpha: 1)
+            sender.tintColor = UIColor(red: 86/255, green: 131/255, blue: 190/255, alpha: 1)
             sender.isSelected = true
             indexOfOneAndOnly = radioButtons.firstIndex(of: sender)
             delegate?.CellButtonTapped(key: indexPathRow, value: indexOfOneAndOnly!)
@@ -55,7 +55,7 @@ class SurveyCell: UITableViewCell{
     func resetButton() {
         for index in radioButtons.indices {
             radioButtons[index].isSelected = false
-            radioButtons[index].tintColor = UIColor(red: 118/255, green: 178/255, blue: 254/255, alpha: 1)
+            radioButtons[index].tintColor = UIColor(red: 86/255, green: 131/255, blue: 190/255, alpha: 1)
         }
     }
     

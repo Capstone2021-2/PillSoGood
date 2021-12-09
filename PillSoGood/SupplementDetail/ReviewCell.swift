@@ -18,7 +18,7 @@ class ReviewCell: UICollectionViewCell {
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         
-        reviewTableView.register(UINib(nibName: "ReviewFormCell", bundle: nil), forCellReuseIdentifier: "ReviewFormCell")
+        reviewTableView.register(UINib(nibName: "ReviewForm", bundle: nil), forCellReuseIdentifier: "ReviewForm")
         
     }
 
@@ -30,8 +30,10 @@ extension ReviewCell: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewFormCell", for: indexPath) as! ReviewFormCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewForm", for: indexPath) as! ReviewForm
         cell.isSelected = false
+        cell.nickname.text = reviewList[indexPath.row].nickname
+        + " 님"
         cell.userInfo.text = reviewList[indexPath.row].gender + "성 | " + reviewList[indexPath.row].age + "세 | " + reviewList[indexPath.row].bodytype
         cell.review.text = reviewList[indexPath.row].text
         

@@ -24,6 +24,46 @@ class RequestViewController: UIViewController {
         
     }
     
+    @IBAction func sendRequest(_ sender: Any) {
+        let imageData = selectImageView.image?.jpegData(compressionQuality: 0.2)
+        let param = ["image" : imageData, "supplement" : supplementName.text! as String, "company" : company.text! as String] as [String : Any]
+        let paramData = try! JSONSerialization.data(withJSONObject: param, options: [])
+        
+        guard let url = URL(string: "http://ec2-13-125-182-91.ap-northeast-2.compute.amazonaws.com:8000/api/request_supplement/") else {
+            print("api is down")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = paramData
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(String(paramData.count), forHTTPHeaderField: "Content-Length")
+
+        URLSession.shared.dataTask(with: request) { Data, Response, Error in
+            if let error = Error {
+                print(error)
+                return
+            }
+            if let response = Response as? HTTPURLResponse {
+                print(response.statusCode)
+                if response.statusCode != 200 {
+                    return
+                }
+            }
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "제품등록 요청 완료", message: "요청이 완료되었습니다! 최대한 빠르게 반영해드리겠습니다 :)", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }.resume()
+        
+    }
+    
+    
     @objc func checkPermission() {
         if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .authorized || PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited {
             DispatchQueue.main.async {
